@@ -1,0 +1,103 @@
+package com.numeralasia.payment.model.midtrans;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
+import com.numeralasia.payment.model.jurnal.VaNumber;
+import lombok.Data;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+public class MidTransactionStatus implements Serializable {
+
+    @JsonProperty("status_code")
+    @SerializedName("status_code")
+    String statusCode;
+
+    @JsonProperty("status_message")
+    @SerializedName("status_message")
+    String statusMessage;
+
+    @JsonProperty("transaction_id")
+    @SerializedName("transaction_id")
+    String transactionId;
+
+    @JsonProperty("order_id")
+    @SerializedName("order_id")
+    String orderId;
+
+    @JsonProperty("gross_amount")
+    @SerializedName("gross_amount")
+    String grossAmount;
+
+    @JsonProperty("payment_type")
+    @SerializedName("payment_type")
+    String paymentType;
+
+    @JsonProperty("transaction_time")
+    @SerializedName("transaction_time")
+    String transactionTime;
+
+    @JsonProperty("settlement_time")
+    @SerializedName("settlement_time")
+    String settlementTime;
+
+
+    @JsonProperty("transaction_status")
+    @SerializedName("transaction_status")
+    String transactionStatus;
+
+    @JsonProperty("va_numbers")
+    @SerializedName("va_numbers")
+    List<VaNumber> vaNumbers = new ArrayList<>();
+
+    @JsonProperty("fraud_status")
+    @SerializedName("fraud_status")
+    String fraudStatus;
+
+    @JsonProperty("bca_va_number")
+    @SerializedName("bca_va_number")
+    String bcaVaNumber;
+
+    @JsonProperty("pdf_url")
+    @SerializedName("pdf_url")
+    String pdfUrl;
+
+    @JsonProperty("finish_redirect_url")
+    @SerializedName("finish_redirect_url")
+    String finishRedirectUrl;
+
+    @JsonProperty("masked_card")
+    @SerializedName("masked_card")
+    String maskedCard ;
+
+    @JsonProperty("approval_code")
+    @SerializedName("approval_code")
+    String approvalCode ;
+
+    @JsonProperty("bank")
+    @SerializedName("bank")
+    String bank ;
+
+    @JsonProperty("channel_response_code")
+    @SerializedName("channel_response_code")
+    String channelResponseCode ;
+
+    @JsonProperty("channel_response_message")
+    @SerializedName("channel_response_message")
+    String channelResponseMessage ;
+
+    @JsonProperty("currency")
+    @SerializedName("currency")
+    String currency ;
+
+    @JsonProperty("signature_key")
+    @SerializedName("signature_key")
+    String signatureKey ;
+
+    @JsonProperty("card_type")
+    @SerializedName("card_type")
+    String cardType ;
+}
