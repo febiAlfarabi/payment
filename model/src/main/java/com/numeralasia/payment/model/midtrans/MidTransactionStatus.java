@@ -1,9 +1,11 @@
 package com.numeralasia.payment.model.midtrans;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 import com.numeralasia.payment.model.jurnal.VaNumber;
 import lombok.Data;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,6 +31,32 @@ public class MidTransactionStatus implements Serializable {
     public static final String FRAUD_STATUS_ACCEPT = "accept";
     public static final String FRAUD_STATUS_CHALLENGE = "challenge";
     public static final String FRAUD_STATUS_DENY = "deny";
+
+    public boolean isSuccess(){
+        return (
+                StringUtils.equals(statusCode, SUCCESS_CODE) &&
+                StringUtils.equals(fraudStatus, FRAUD_STATUS_ACCEPT) &&
+                        io.github.febialfarabi.utility.StringUtils.
+                                oneOf(transactionStatus, TRANSACTION_STATUS_CAPTURE,
+                                        TRANSACTION_STATUS_SETTLED));
+    }
+
+    public boolean isExpired(){
+        return (
+                StringUtils.equals(transactionStatus, TRANSACTION_STATUS_EXPIRED));
+    }
+
+    public boolean isDenied(){
+        return (
+                StringUtils.equals(statusCode, DENIED_CODE)
+                        && StringUtils.equals(transactionStatus, TRANSACTION_STATUS_DENIED));
+    }
+
+    public boolean isCancel(){
+        return (
+                StringUtils.equals(transactionStatus, TRANSACTION_STATUS_CANCELLED));
+    }
+
 
     @JsonProperty("status_code")
     @SerializedName("status_code")
@@ -118,4 +146,6 @@ public class MidTransactionStatus implements Serializable {
     @JsonProperty("card_type")
     @SerializedName("card_type")
     String cardType ;
+
+
 }
