@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import io.github.febialfarabi.utility.MSRestTemplate;
 
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
 @PropertySource("classpath:application.properties")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
