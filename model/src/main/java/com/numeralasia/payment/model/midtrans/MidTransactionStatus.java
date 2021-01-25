@@ -30,7 +30,6 @@ public class MidTransactionStatus implements Serializable {
     public static final String FRAUD_STATUS_CHALLENGE = "challenge";
     public static final String FRAUD_STATUS_DENY = "deny";
 
-
     @JsonProperty("status_code")
     @SerializedName("status_code")
     String statusCode;
