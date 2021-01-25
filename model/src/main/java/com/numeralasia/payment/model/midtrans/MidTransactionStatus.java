@@ -32,7 +32,7 @@ public class MidTransactionStatus implements Serializable {
     public static final String FRAUD_STATUS_CHALLENGE = "challenge";
     public static final String FRAUD_STATUS_DENY = "deny";
 
-    public boolean isSuccess(){
+    public boolean isSucceed(){
         return (
                 StringUtils.equals(statusCode, SUCCESS_CODE) &&
                 StringUtils.equals(fraudStatus, FRAUD_STATUS_ACCEPT) &&
@@ -52,7 +52,7 @@ public class MidTransactionStatus implements Serializable {
                         && StringUtils.equals(transactionStatus, TRANSACTION_STATUS_DENIED));
     }
 
-    public boolean isCancel(){
+    public boolean isCanceled(){
         return (
                 StringUtils.equals(transactionStatus, TRANSACTION_STATUS_CANCELLED));
     }
