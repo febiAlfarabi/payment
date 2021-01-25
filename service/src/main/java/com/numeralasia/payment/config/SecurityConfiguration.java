@@ -10,6 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -49,19 +50,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api**").permitAll()
                 .antMatchers("/swagger-ui.html**")
                 .authenticated().and().formLogin().and().apply(new JwtConfigurer());
+    }
+//
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        super.configure(auth);
+//    }
 
-//        if(secureSwagger){
-//            http.csrf().disable().authorizeRequests()
-//                    .antMatchers("/api**").permitAll()
-//                    .antMatchers("/swagger-ui.html**").authenticated().and().formLogin()
-//                    .and()
-//                    .apply(new JwtConfigurer(jwtTokenProvider));
-//        }else{
-//            http.csrf().disable().authorizeRequests()
-//                    .antMatchers("/api**").permitAll()
-//                    .and()
-//                    .apply(new JwtConfigurer(jwtTokenProvider));
-//        }
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/api**");
     }
 
     @Autowired
