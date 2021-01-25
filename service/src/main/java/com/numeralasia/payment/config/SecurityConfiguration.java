@@ -1,5 +1,6 @@
 package com.numeralasia.payment.config;
 
+import com.numeralasia.payment.security.JwtConfigurer;
 import com.numeralasia.payment.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -46,7 +47,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/api**").permitAll()
-                .antMatchers("/swagger-ui.html**").authenticated().and().formLogin();
+                .antMatchers("/swagger-ui.html**")
+                .authenticated().and().formLogin().and().apply(new JwtConfigurer());
 
 //        if(secureSwagger){
 //            http.csrf().disable().authorizeRequests()

@@ -65,18 +65,15 @@ public class BasicConfiguration extends WebMvcConfigurerAdapter implements Appli
                 mediaType("json", MediaType.APPLICATION_JSON);
     }
 
-    @Value("${}")
-
-
     @Bean
     public Docket universalApi() {
         return new Docket(DocumentationType.SWAGGER_12)
-                .groupName("3 - Universal Documentation")
+                .groupName("1 - Universal Documentation")
                 .select()
                 .paths(PathSelectors.any())
                 .build().apiInfo(
                         new ApiInfoBuilder()
-                                .title("Paymenr Universal Documentation")
+                                .title("Payment Universal Documentation")
                                 .description("API Documentation with json structure / formatting," +
                                         "Rest Method, e.t.c for Payment")
                                 .license("Apache 2.0")
