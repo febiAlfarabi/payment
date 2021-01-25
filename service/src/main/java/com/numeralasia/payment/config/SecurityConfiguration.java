@@ -64,8 +64,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        String password = passwordEncoder.encode(swaggerPassword);
-        auth.inMemoryAuthentication().withUser(swaggerUsername).password(password).authorities(Constant.SWAGGER);
+//        String password = passwordEncoder.encode(swaggerPassword);
+//        auth.inMemoryAuthentication().withUser(swaggerUsername).password(password).authorities(Constant.SWAGGER);
     }
 
 //    @Override
