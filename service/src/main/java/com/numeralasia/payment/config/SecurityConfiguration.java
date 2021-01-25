@@ -38,11 +38,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     MSRestTemplate restTemplate ;
 
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+//    @Bean
+//    @Override
+//    public AuthenticationManager authenticationManagerBean() throws Exception {
+//        return super.authenticationManagerBean();
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
