@@ -12,6 +12,25 @@ import java.util.List;
 @Data
 public class MidTransactionStatus implements Serializable {
 
+    public static final String SUCCESS_CODE = "200";
+    public static final String PENDING_CODE = "201";
+    public static final String DENIED_CODE = "202";
+    public static final String EXPIRED_CODE = "407";
+
+    public static final String TRANSACTION_STATUS_AUTHORIZED = "authorize";
+    public static final String TRANSACTION_STATUS_CAPTURE = "capture";
+    public static final String TRANSACTION_STATUS_SETTLED = "settlement";
+    public static final String TRANSACTION_STATUS_PENDING = "pending";
+    public static final String TRANSACTION_STATUS_CANCELLED = "cancel";
+    public static final String TRANSACTION_STATUS_DENIED = "deny";
+    public static final String TRANSACTION_STATUS_EXPIRED = "expire";
+    public static final String TRANSACTION_STATUS_FAILED = "failure";
+
+    public static final String FRAUD_STATUS_ACCEPT = "accept";
+    public static final String FRAUD_STATUS_CHALLENGE = "challenge";
+    public static final String FRAUD_STATUS_DENY = "deny";
+
+
     @JsonProperty("status_code")
     @SerializedName("status_code")
     String statusCode;
