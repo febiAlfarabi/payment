@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import io.github.febialfarabi.utility.MSRestTemplate;
 
 @Configuration
-//@EnableWebSecurity
+@EnableWebSecurity
 @PropertySource("classpath:application.properties")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -62,12 +62,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/api**");
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        String password = passwordEncoder.encode(swaggerPassword);
+//        auth.inMemoryAuthentication().withUser(swaggerUsername).password(password).authorities(Constant.SWAGGER);
+//    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         String password = passwordEncoder.encode(swaggerPassword);
         auth.inMemoryAuthentication().withUser(swaggerUsername).password(password).authorities(Constant.SWAGGER);
     }
-
-
-
 }
