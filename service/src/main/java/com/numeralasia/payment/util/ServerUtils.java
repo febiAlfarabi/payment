@@ -32,7 +32,7 @@ public class ServerUtils {
     @Value("${public.access-mode}")
     private boolean publicAccessMode ;
 
-    @Value("${server.address}")
+    @Value("${public.current-ip}")
     private String publicCurrentBackupIp ;
 
     @Value("${public.domain-api}")
