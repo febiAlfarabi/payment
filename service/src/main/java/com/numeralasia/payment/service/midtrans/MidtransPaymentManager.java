@@ -102,7 +102,7 @@ public class MidtransPaymentManager {
         }
     }
 
-    public MidTransactionStatus transactionStatus(String refCode) {
+    public MidTransactionStatus checkStatus(String refCode) {
         String url = midtransApiDomain + "/v2/" + refCode + "/status";
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
