@@ -6,7 +6,7 @@ import com.numeralasia.payment.component.FileStorage;
 import com.numeralasia.payment.entity.BasicField;
 import com.numeralasia.payment.model.exception.AppException;
 import com.numeralasia.payment.util.Constant;
-import com.numeralasia.payment.util.MSRestTemplate;
+import io.github.febialfarabi.utility.MSRestTemplate;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
