@@ -38,11 +38,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     MSRestTemplate restTemplate ;
 
-//    @Bean
-//    @Override
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        return super.authenticationManagerBean();
-//    }
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -64,13 +64,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        String password = passwordEncoder.encode(swaggerPassword);
-//        auth.inMemoryAuthentication().withUser(swaggerUsername).password(password).authorities(Constant.SWAGGER);
+        String password = passwordEncoder.encode(swaggerPassword);
+        auth.inMemoryAuthentication().withUser(swaggerUsername).password(password).authorities(Constant.SWAGGER);
     }
-
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        String password = passwordEncoder.encode(swaggerPassword);
-//        auth.inMemoryAuthentication().withUser(swaggerUsername).password(password).authorities(Constant.SWAGGER);
-//    }
 }
