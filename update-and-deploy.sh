@@ -19,7 +19,8 @@ fi &&
 
 cd /opt/payment/master &&
 git stash &&
-(git pull https://numeralasia:Gioibanez%2E1@gitlab.com/numeralasia/payment.git || true) &&
+
+(git pull https://alfarabidwik:Gioibanez%2E1@github.com/febiAlfarabi/payment.git || true) &&
 
 cd /opt/payment/master &&
 > "service/src/main/resources/application.properties" &&
