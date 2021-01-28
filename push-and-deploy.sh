@@ -6,6 +6,7 @@ if [ $1 = "" ];then
   return 1
 fi &&
 
+
 (git add --all && git commit -m "-" && git push origin master) || true &&
 
 if [ $1 = "dev" ];then
