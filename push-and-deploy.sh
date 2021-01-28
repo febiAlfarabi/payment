@@ -9,12 +9,12 @@ fi &&
 (git add --all && git commit -m "-" && git push origin master) || true &&
 
 if [ $1 = "dev" ];then
-  ssh root@numeralasia.com "sh /opt/payment/master/update-and-deploy.sh ${1}"
+  ssh root@144.91.85.99 "sh /opt/payment/master/update-and-deploy.sh ${1}"
 elif [ $1 = "prod" ];then
-  ssh root@numeralasia.com "sh /opt/payment/master/update-and-deploy.sh ${1}"
+  ssh root@144.91.85.99 "sh /opt/payment/master/update-and-deploy.sh ${1}"
 elif [ $1 = "both" ];then
-  ssh root@numeralasia.com "sh /opt/payment/master/update-and-deploy.sh dev" &&
-  ssh root@numeralasia.com "sh /opt/payment/master/update-and-deploy.sh prod"
+  ssh root@144.91.85.99 "sh /opt/payment/master/update-and-deploy.sh dev" &&
+  ssh root@144.91.85.99 "sh /opt/payment/master/update-and-deploy.sh prod"
 fi &&
 
 exit 0
