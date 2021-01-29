@@ -11,10 +11,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
@@ -22,8 +25,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-@Configuration
-public class AppStartInitializer{
+@Component
+@Order(0)
+public class AppStartInitializer implements ApplicationListener<ApplicationReadyEvent> {
 
     private static final Logger logger = LoggerFactory.getLogger(AppStartInitializer.class);
 
@@ -34,10 +38,11 @@ public class AppStartInitializer{
     @Autowired ClientService clientService ;
 
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void onApplicationEvent() {
+    @Override
+    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         logger.debug("### START GENERATING DATA ###");
         buildClient();
+
     }
 
     @Value("classpath:"+ Constant.MASTER_CLIENT_JSON_FILE)
