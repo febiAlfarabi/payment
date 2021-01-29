@@ -57,37 +57,6 @@ public class ImageController extends BasicController {
     }
 
 
-    @GetMapping(Constant.REST_TEMPLATE_IMAGE+"/{id}/{filename:.+}")
-    public ResponseEntity<ByteArrayResource> templateImage(
-            @PathVariable("id") Long id,
-            @PathVariable("filename") String filename,
-            @RequestParam(name = "webp", required = false, defaultValue = "false") Boolean webp) throws Exception {
-
-        String path = templateImageDir+File.separator+id+File.separator+filename;
-        File compressedFile = compress(path, Constant.MEDIUM_QUALITY, BooleanUtils.isTrue(webp));
-
-        if(!compressedFile.exists()){
-            throw new RuntimeException(message("image.not.found"));
-        }
-        return grabFile(filename, compressedFile.getAbsolutePath());
-    }
-
-
-
-    @GetMapping(Constant.FORM_MEDIA_DIRECTORY+"/**")
-    public ResponseEntity<ByteArrayResource> formImage(
-            HttpServletRequest request) throws Exception {
-        logger.debug("URI "+request.getRequestURI());
-
-        String requestUrl = request.getRequestURL().toString();
-        logger.debug("URL "+requestUrl);
-        String path = Constant.FORM_MEDIA_DIRECTORY+requestUrl.split(Constant.FORM_MEDIA_DIRECTORY)[1];
-
-//        String path = userIdCardDir+File.separator+id+File.separator+filename;
-        File compressedFile = compress(path, Constant.HIGH_QUALITY, false);
-        return grabFile(compressedFile.getName(), compressedFile.getAbsolutePath());
-    }
-
 
     @GetMapping(Constant.REST_MIDTRANS_MEDIATOR_IMAGE+"/{id}/{filename:.+}")
     public ResponseEntity<ByteArrayResource> midtransMediatorImage(
