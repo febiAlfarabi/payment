@@ -5,8 +5,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -17,7 +15,6 @@ public class JsonDateTimeDeserializer extends JsonDeserializer {
     SimpleDateFormat dateTimeformat = new SimpleDateFormat(Constant.API_DATE_TIME_FORMAT);
     SimpleDateFormat dateFormat = new SimpleDateFormat(Constant.API_DATE_FORMAT);
     SimpleDateFormat dateTimeZoneFormatter = new SimpleDateFormat(Constant.DATE_TIMEZONE_FORMAT);
-    Logger logger = LoggerFactory.getLogger(JsonDateTimeDeserializer.class);
 
     @Override
     public Date deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {

@@ -127,7 +127,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.0.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: javax.el:el-api:2.2.1-b04" level="project" />
     <orderEntry type="library" name="Maven: one.util:streamex:0.6.5" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.1.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-mail:2.0.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.sun.mail:javax.mail:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
@@ -195,8 +195,6 @@
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-validator:5.0.3.Final" level="project" />
     <orderEntry type="library" name="Maven: org.freedesktop.tango:tango-icon-theme:0.8.90" level="project" />
     <orderEntry type="library" name="Maven: io.github.biezhi:webp-io:0.0.5" level="project" />
-    <orderEntry type="library" name="Maven: io.github.febialfarabi:payment-model:1.0.7" level="project" />
-    <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
     <orderEntry type="library" name="Maven: com.google.firebase:firebase-admin:6.8.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.api-client:google-api-client:1.25.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.oauth-client:google-oauth-client:1.25.0" level="project" />
@@ -251,6 +249,8 @@
     <orderEntry type="library" name="Maven: org.reflections:reflections:0.9.11" level="project" />
     <orderEntry type="library" name="Maven: com.jcraft:jsch:0.1.55" level="project" />
     <orderEntry type="library" name="Maven: io.github.febialfarabi:sumatera:1.0.21" level="project" />
+    <orderEntry type="library" name="Maven: io.github.febialfarabi:payment-model:1.0.7" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
     <orderEntry type="library" name="Maven: io.github.febialfarabi:utility:1.0.8" level="project" />
     <orderEntry type="library" name="Maven: net.sourceforge.streamsupport:android-retrostreams:1.7.2" level="project" />
   </component>
