@@ -39,17 +39,17 @@ public class AppStartInitializer implements ApplicationListener<ApplicationReady
 //    @PostConstruct
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         try {
-            Thread.currentThread().sleep(5000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         logger.debug("### START GENERATING DATA ###");
-        buildClientBalance();
+        buildClient();
     }
 
     @Value("classpath:"+ Constant.MASTER_CLIENT_JSON_FILE)
     Resource masterClientResource ;
-    void buildClientBalance(){
+    void buildClient(){
         HashMap<Integer, String> map = new HashMap<>();
         int k = 1;
 
