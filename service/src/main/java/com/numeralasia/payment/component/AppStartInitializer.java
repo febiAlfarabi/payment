@@ -1,4 +1,4 @@
-package com.numeralasia.payment.config;
+package com.numeralasia.payment.component;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -10,10 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,8 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Component
-@Order(0)
-public class AppStartInitializer implements ApplicationListener<ApplicationReadyEvent> {
+public class AppStartInitializer implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(AppStartInitializer.class);
 
@@ -38,11 +36,17 @@ public class AppStartInitializer implements ApplicationListener<ApplicationReady
     @Autowired ClientService clientService ;
 
 
-    @Override
-    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-        logger.debug("### START GENERATING DATA ###");
-        buildClient();
+//    @Override
+//    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
+//        logger.debug("### START GENERATING DATA ###");
+//        buildClient();
+//
+//    }
 
+
+    @Override
+    public void run(String... args) throws Exception {
+        buildClient();
     }
 
     @Value("classpath:"+ Constant.MASTER_CLIENT_JSON_FILE)
