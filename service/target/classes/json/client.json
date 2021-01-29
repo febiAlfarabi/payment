@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "Pasar Kerja",
+    "reference": "pasarkerja",
+    "serviceAddress": "dev.pasarkerja.com",
+    "companyClass": "corporate",
+    "domainClass": "domain",
+    "notificationEndpoint": "/api/midtrans/notification",
+  }
+]
