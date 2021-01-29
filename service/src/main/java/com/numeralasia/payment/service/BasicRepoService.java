@@ -4,9 +4,10 @@ import com.google.gson.Gson;
 import com.numeralasia.payment.component.AppCacheManager;
 import com.numeralasia.payment.component.FileStorage;
 import com.numeralasia.payment.entity.BasicField;
-import com.numeralasia.payment.entity.midtrans.MidtransMediator;
+import com.numeralasia.payment.entity.NonIdEBase;
 import com.numeralasia.payment.model.exception.AppException;
-import com.numeralasia.payment.repository.BaseRepository;
+import com.numeralasia.payment.repository.EBaseRepository;
+import com.numeralasia.payment.repository.NonIdEBaseRepository;
 import com.numeralasia.payment.util.Constant;
 import io.github.febialfarabi.utility.MSRestTemplate;
 import org.modelmapper.ModelMapper;
@@ -124,7 +125,7 @@ public abstract class BasicRepoService<T extends BasicField> {
         return messageSource.getMessage(message, args==null?new Object[]{}:args, locale);
     }
 
-    public abstract <JPA extends BaseRepository> JPA repository();
+    public abstract <JPA extends EBaseRepository> JPA repository();
 
 
     protected long resultCount(Integer page, String sql, Map<String, Object> paramaterMap){
@@ -148,12 +149,18 @@ public abstract class BasicRepoService<T extends BasicField> {
         Sort sort = new Sort(ascending?Sort.Direction.ASC: Sort.Direction.DESC, sortir);
         List<T> datas = new ArrayList<>();
         if(active!=null){
-            datas = repository().findByActive(active, sort);
+            if(repository() instanceof EBaseRepository){
+                datas = repository().findByActive(active, sort);
+            }else if(repository() instanceof NonIdEBaseRepository){
+                datas = repository().findByActive(active, sort);
+            }
         }else{
             datas = repository().findAll(sort);
         }
         return datas;
     }
+
+
 
 
 

@@ -1,13 +1,11 @@
 package com.numeralasia.payment.repository.midtrans;
 
 import com.numeralasia.payment.entity.midtrans.MidtransMediator;
-import com.numeralasia.payment.repository.BaseRepository;
-import org.springframework.data.domain.Sort;
+import com.numeralasia.payment.repository.EBaseRepository;
 
-import java.util.List;
 import java.util.Optional;
 
-public interface MidtransMediatorRepository extends BaseRepository<MidtransMediator> {
+public interface MidtransMediatorRepositoryE extends EBaseRepository<MidtransMediator> {
 
 
     Optional<MidtransMediator> findByPaymentType(String paymentType);
