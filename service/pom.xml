@@ -287,11 +287,6 @@
             <version>0.0.5</version>
         </dependency>
         <dependency>
-            <groupId>io.github.febialfarabi</groupId>
-            <artifactId>payment-model</artifactId>
-            <version>1.0.3</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.firebase</groupId>
             <artifactId>firebase-admin</artifactId>
             <version>6.8.1</version>
@@ -336,10 +331,10 @@
         <!--            <name>bintray</name>-->
         <!--            <url>http://jcenter.bintray.com</url>-->
         <!--        </repository>-->
-<!--        <repository>-->
-<!--            <id>projectlombok.org</id>-->
-<!--            <url>https://projectlombok.org/edge-releases</url>-->
-<!--        </repository>-->
+        <repository>
+            <id>projectlombok.org</id>
+            <url>https://projectlombok.org/edge-releases</url>
+        </repository>
         <repository>
             <id>jdal</id>
             <name>JDAL Repository</name>
