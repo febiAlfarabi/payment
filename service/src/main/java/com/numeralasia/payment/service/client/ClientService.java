@@ -38,7 +38,7 @@ public class ClientService extends BasicRepoService<Client> {
     @PostConstruct
     public void construct() {
         super.construct();
-        logger.debug("### START GENERATING DATA ###");s
+        logger.debug("### START GENERATING DATA ###");
         buildClient();
     }
 
