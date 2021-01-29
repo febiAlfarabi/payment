@@ -38,11 +38,6 @@ public class AppStartInitializer implements ApplicationListener<ApplicationReady
 //    @PostConstruct
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         logger.debug("### START GENERATING DATA ###");
         buildClient();
     }

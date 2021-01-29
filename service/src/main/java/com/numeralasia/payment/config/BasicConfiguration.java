@@ -154,7 +154,9 @@ public class BasicConfiguration extends WebMvcConfigurerAdapter implements Appli
                 "/svg/**",
                 "/ttf/**",
                 "/**.xml",
-                "/**.txt")
+                "/**.txt",
+                "/json/**.json",
+                "/**.json")
                 .addResourceLocations(
                         "classpath:/META-INF/resources/webjars/",
                         "classpath:/static/color/",
@@ -165,7 +167,8 @@ public class BasicConfiguration extends WebMvcConfigurerAdapter implements Appli
                         "classpath:/static/image/",
                         "classpath:/static/js/",
                         "classpath:/templates/",
-                        "classpath:/static/");
+                        "classpath:/static/",
+                        "classpath:/json/");
     }
 
 
