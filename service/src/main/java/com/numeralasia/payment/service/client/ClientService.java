@@ -66,6 +66,7 @@ public class ClientService extends BasicRepoService<Client> {
                     + " ###################");
 
         } catch (Exception e) {
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
     }
