@@ -131,7 +131,8 @@
         <dependency>
             <groupId>io.github.febialfarabi</groupId>
             <artifactId>utility</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.7</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

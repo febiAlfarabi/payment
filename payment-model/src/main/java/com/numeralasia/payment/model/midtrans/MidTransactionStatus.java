@@ -1,11 +1,10 @@
 package com.numeralasia.payment.model.midtrans;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 import com.numeralasia.payment.model.jurnal.VaNumber;
+import io.github.febialfarabi.utility.StringUtils;
 import lombok.Data;
-import org.apache.commons.lang.StringUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -34,27 +33,27 @@ public class MidTransactionStatus implements Serializable {
 
     public boolean isSucceed(){
         return (
-                StringUtils.equals(statusCode, SUCCESS_CODE) &&
-                StringUtils.equals(fraudStatus, FRAUD_STATUS_ACCEPT) &&
-                        io.github.febialfarabi.utility.StringUtils.
+                org.apache.commons.lang.StringUtils.equals(statusCode, SUCCESS_CODE) &&
+                org.apache.commons.lang.StringUtils.equals(fraudStatus, FRAUD_STATUS_ACCEPT) &&
+                        StringUtils.
                                 oneOf(transactionStatus, TRANSACTION_STATUS_CAPTURE,
                                         TRANSACTION_STATUS_SETTLED));
     }
 
     public boolean isExpired(){
         return (
-                StringUtils.equals(transactionStatus, TRANSACTION_STATUS_EXPIRED));
+                org.apache.commons.lang.StringUtils.equals(transactionStatus, TRANSACTION_STATUS_EXPIRED));
     }
 
     public boolean isDenied(){
         return (
-                StringUtils.equals(statusCode, DENIED_CODE)
-                        && StringUtils.equals(transactionStatus, TRANSACTION_STATUS_DENIED));
+                org.apache.commons.lang.StringUtils.equals(statusCode, DENIED_CODE)
+                        && org.apache.commons.lang.StringUtils.equals(transactionStatus, TRANSACTION_STATUS_DENIED));
     }
 
     public boolean isCanceled(){
         return (
-                StringUtils.equals(transactionStatus, TRANSACTION_STATUS_CANCELLED));
+                org.apache.commons.lang.StringUtils.equals(transactionStatus, TRANSACTION_STATUS_CANCELLED));
     }
 
 

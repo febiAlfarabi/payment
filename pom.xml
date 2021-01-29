@@ -34,7 +34,7 @@
 
     <modules>
         <module>service</module>
-        <module>model</module>
+        <module>payment-model</module>
     </modules>
 
     <repositories>
