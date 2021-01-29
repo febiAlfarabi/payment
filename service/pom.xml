@@ -321,12 +321,12 @@
         <dependency>
             <groupId>io.github.febialfarabi</groupId>
             <artifactId>payment-model</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </dependency>
         <dependency>
             <groupId>io.github.febialfarabi</groupId>
             <artifactId>utility</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.7</version>
         </dependency>
 
     </dependencies>
