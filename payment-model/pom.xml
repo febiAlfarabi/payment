@@ -128,11 +128,6 @@
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>io.github.febialfarabi</groupId>
-            <artifactId>utility</artifactId>
-            <version>1.0.8</version>
-        </dependency>
 
     </dependencies>
 
