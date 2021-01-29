@@ -3,6 +3,7 @@ package com.numeralasia.payment.service.client;
 import com.numeralasia.payment.entity.client.Client;
 import com.numeralasia.payment.entity.midtrans.MidtransMediator;
 import com.numeralasia.payment.model.exception.AppException;
+import com.numeralasia.payment.repository.BaseRepository;
 import com.numeralasia.payment.repository.client.ClientRepository;
 import com.numeralasia.payment.repository.midtrans.MidtransMediatorRepository;
 import com.numeralasia.payment.service.BasicRepoService;
@@ -24,7 +25,7 @@ public class ClientService extends BasicRepoService<Client> {
     @Autowired private ClientRepository repository ;
 
     @Override
-    public JpaRepository repository() {
+    public BaseRepository<Client> repository() {
         return repository;
     }
 

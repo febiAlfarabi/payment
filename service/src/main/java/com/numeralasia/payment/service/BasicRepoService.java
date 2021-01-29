@@ -4,7 +4,9 @@ import com.google.gson.Gson;
 import com.numeralasia.payment.component.AppCacheManager;
 import com.numeralasia.payment.component.FileStorage;
 import com.numeralasia.payment.entity.BasicField;
+import com.numeralasia.payment.entity.midtrans.MidtransMediator;
 import com.numeralasia.payment.model.exception.AppException;
+import com.numeralasia.payment.repository.BaseRepository;
 import com.numeralasia.payment.util.Constant;
 import io.github.febialfarabi.utility.MSRestTemplate;
 import org.modelmapper.ModelMapper;
@@ -17,7 +19,6 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
@@ -123,7 +124,7 @@ public abstract class BasicRepoService<T extends BasicField> {
         return messageSource.getMessage(message, args==null?new Object[]{}:args, locale);
     }
 
-    public abstract <JPA extends JpaRepository> JPA repository();
+    public abstract <JPA extends BaseRepository> JPA repository();
 
 
     protected long resultCount(Integer page, String sql, Map<String, Object> paramaterMap){
@@ -142,6 +143,18 @@ public abstract class BasicRepoService<T extends BasicField> {
         }
         return countResult ;
     }
+
+    public List<T> findAll(Boolean active, String sortir, Boolean ascending) {
+        Sort sort = new Sort(ascending?Sort.Direction.ASC: Sort.Direction.DESC, sortir);
+        List<T> datas = new ArrayList<>();
+        if(active!=null){
+            datas = repository().findByActive(active, sort);
+        }else{
+            datas = repository().findAll(sort);
+        }
+        return datas;
+    }
+
 
 
 }

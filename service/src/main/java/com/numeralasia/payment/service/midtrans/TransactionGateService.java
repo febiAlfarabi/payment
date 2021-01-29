@@ -2,6 +2,7 @@ package com.numeralasia.payment.service.midtrans;
 
 import com.numeralasia.payment.entity.midtrans.TransactionGate;
 import com.numeralasia.payment.model.exception.AppException;
+import com.numeralasia.payment.repository.BaseRepository;
 import com.numeralasia.payment.repository.midtrans.TransactionGateRepository;
 import com.numeralasia.payment.service.BasicRepoService;
 import com.numeralasia.payment.util.Constant;
@@ -17,7 +18,7 @@ public class TransactionGateService extends BasicRepoService<TransactionGate> {
     @Autowired private TransactionGateRepository repository ;
 
     @Override
-    public JpaRepository repository() {
+    public BaseRepository<TransactionGate> repository() {
         return repository;
     }
 

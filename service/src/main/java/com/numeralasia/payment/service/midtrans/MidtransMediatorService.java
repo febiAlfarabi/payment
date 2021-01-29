@@ -1,6 +1,7 @@
 package com.numeralasia.payment.service.midtrans;
 
 import com.numeralasia.payment.entity.midtrans.MidtransMediator;
+import com.numeralasia.payment.repository.BaseRepository;
 import com.numeralasia.payment.repository.midtrans.MidtransMediatorRepository;
 import com.numeralasia.payment.service.BasicRepoService;
 import org.apache.commons.lang.BooleanUtils;
@@ -19,7 +20,7 @@ public class MidtransMediatorService extends BasicRepoService<MidtransMediator> 
     @Autowired private MidtransMediatorRepository repository ;
 
     @Override
-    public JpaRepository repository() {
+    public BaseRepository<MidtransMediator> repository() {
         return repository;
     }
 
