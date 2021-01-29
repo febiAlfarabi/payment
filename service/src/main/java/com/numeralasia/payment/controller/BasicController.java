@@ -11,10 +11,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.persistence.MappedSuperclass;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Locale;
 
 @MappedSuperclass
 public abstract class BasicController<E> {
@@ -46,6 +48,11 @@ public abstract class BasicController<E> {
 
 
     @ApiParam protected ConfigurationService configurationService ;
+
+    protected String message(String message, Object... args) {
+        Locale locale = LocaleContextHolder.getLocale();
+        return messageSource.getMessage(message, args==null?new Object[]{}:args, locale);
+    }
 
 
 
