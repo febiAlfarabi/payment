@@ -35,8 +35,8 @@ public class AppStartInitializer implements ApplicationListener<ApplicationReady
 
 
 
-    //    @Override
 //    @PostConstruct
+    @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         try {
             Thread.sleep(5000);
