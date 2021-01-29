@@ -2,7 +2,7 @@ package com.numeralasia.payment.service.midtrans;
 
 import com.numeralasia.payment.entity.midtrans.MidtransMediator;
 import com.numeralasia.payment.repository.EBaseRepository;
-import com.numeralasia.payment.repository.midtrans.MidtransMediatorRepositoryE;
+import com.numeralasia.payment.repository.midtrans.MidtransMediatorRepository;
 import com.numeralasia.payment.service.BasicRepoService;
 import org.apache.commons.lang.BooleanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class MidtransMediatorService extends BasicRepoService<MidtransMediator> {
 
-    @Autowired private MidtransMediatorRepositoryE repository ;
+    @Autowired private MidtransMediatorRepository repository ;
 
     @Override
     public EBaseRepository<MidtransMediator> repository() {

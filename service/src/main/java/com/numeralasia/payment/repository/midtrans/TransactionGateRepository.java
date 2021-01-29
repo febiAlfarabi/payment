@@ -5,7 +5,7 @@ import com.numeralasia.payment.repository.EBaseRepository;
 
 import java.util.Optional;
 
-public interface TransactionGateRepositoryE extends EBaseRepository<TransactionGate> {
+public interface TransactionGateRepository extends EBaseRepository<TransactionGate> {
 
     Optional<TransactionGate> findByOrderId(String orderId);
 }

@@ -3,7 +3,7 @@ package com.numeralasia.payment.service.midtrans;
 import com.numeralasia.payment.entity.midtrans.TransactionGate;
 import com.numeralasia.payment.model.exception.AppException;
 import com.numeralasia.payment.repository.EBaseRepository;
-import com.numeralasia.payment.repository.midtrans.TransactionGateRepositoryE;
+import com.numeralasia.payment.repository.midtrans.TransactionGateRepository;
 import com.numeralasia.payment.service.BasicRepoService;
 import com.numeralasia.payment.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TransactionGateService extends BasicRepoService<TransactionGate> {
 
-    @Autowired private TransactionGateRepositoryE repository ;
+    @Autowired private TransactionGateRepository repository ;
 
     @Override
     public EBaseRepository<TransactionGate> repository() {

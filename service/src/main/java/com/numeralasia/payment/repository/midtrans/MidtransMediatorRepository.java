@@ -5,7 +5,7 @@ import com.numeralasia.payment.repository.EBaseRepository;
 
 import java.util.Optional;
 
-public interface MidtransMediatorRepositoryE extends EBaseRepository<MidtransMediator> {
+public interface MidtransMediatorRepository extends EBaseRepository<MidtransMediator> {
 
 
     Optional<MidtransMediator> findByPaymentType(String paymentType);
