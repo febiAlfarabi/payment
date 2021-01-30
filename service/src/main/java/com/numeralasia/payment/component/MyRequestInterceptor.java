@@ -31,12 +31,12 @@ public class MyRequestInterceptor extends HandlerInterceptorAdapter {
         HttpServletRequest requestCacheWrapperObject = new ContentCachingRequestWrapper(request);
         String body = "" ;
         try {
-            body = IOUtils.toString(request.getReader());
+            body = IOUtils.toString(requestCacheWrapperObject.getReader());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String incomingRequest = "### INCOMING REQUEST ### "+request.getRequestURI()+" :: ";
-        for (String httpHeaderName : Collections.list(request.getHeaderNames())) {
+        String incomingRequest = "### INCOMING REQUEST ### "+requestCacheWrapperObject.getRequestURI()+" :: ";
+        for (String httpHeaderName : Collections.list(requestCacheWrapperObject.getHeaderNames())) {
             String value = request.getHeader(httpHeaderName);
             logger.debug("===========>> Header name : {} #### Header value : {} ", httpHeaderName, value);
         }
