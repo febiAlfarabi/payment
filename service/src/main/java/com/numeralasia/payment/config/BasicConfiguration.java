@@ -29,6 +29,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.util.ContentCachingRequestWrapper;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.service.Contact;
@@ -183,7 +184,9 @@ public class BasicConfiguration extends WebMvcConfigurerAdapter implements Appli
     public class SmartLocaleResolver extends CookieLocaleResolver {
 
         @Override
-        public Locale resolveLocale(HttpServletRequest request) {
+        public Locale resolveLocale(HttpServletRequest httpServletRequest) {
+            HttpServletRequest request = new ContentCachingRequestWrapper(httpServletRequest);
+
             for (String httpHeaderName : Collections.list(request.getHeaderNames())) {
                 logger4j.debug("===========>> Header name: " + httpHeaderName);
             }
