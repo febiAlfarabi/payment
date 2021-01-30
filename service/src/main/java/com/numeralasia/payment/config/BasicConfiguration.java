@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.numeralasia.payment.component.MyRequestInterceptor;
 import io.github.febialfarabi.utility.MSRestTemplate;
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
@@ -14,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.MessageSource;
@@ -93,9 +91,6 @@ public class BasicConfiguration extends WebMvcConfigurerAdapter implements Appli
         return gsonBuilder.create();
     }
 
-    @Autowired
-    MyRequestInterceptor requestInterceptor ;
-
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
@@ -106,7 +101,7 @@ public class BasicConfiguration extends WebMvcConfigurerAdapter implements Appli
 
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
-                registry.addInterceptor(requestInterceptor).addPathPatterns("/**/**/**/");
+//                registry.addInterceptor(requestInterceptor).addPathPatterns("/**/**/**/");
             }
         };
     }
