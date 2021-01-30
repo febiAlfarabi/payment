@@ -2,6 +2,8 @@ package com.numeralasia.payment.util;
 
 public class Constant {
 
+    public static final String API_DATE_TIME_FORMAT = "yyyy-MM-ddTHH:mm:ss";
+
 
     public static final int VERIFICATION_FAILED_CODE = 302 ;
     public static final int ALREADY_VERIFIED_CODE = 303 ;
