@@ -3,7 +3,7 @@ package com.numeralasia.payment.model.midtrans;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 import com.numeralasia.payment.model.jurnal.VaNumber;
-import com.numeralasia.payment.util.StringUtils;
+import io.github.febialfarabi.utility.StringUtils;
 import lombok.Data;
 
 import java.io.Serializable;

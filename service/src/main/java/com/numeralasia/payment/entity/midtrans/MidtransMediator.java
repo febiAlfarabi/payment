@@ -4,6 +4,7 @@ import com.numeralasia.payment.component.Spring;
 import com.numeralasia.payment.entity.EBase;
 import com.numeralasia.payment.util.Constant;
 import com.numeralasia.payment.util.ServerUtils;
+import io.github.febialfarabi.utility.NumberUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -51,12 +52,9 @@ public class MidtransMediator extends EBase {
         BigDecimal amountFee = BigDecimal.ZERO;
         if(payment!=null){
             if(percent!=null){
-                amountFee = amountFee.add(payment.multiply(BigDecimal.valueOf(percent).divide(BigDecimal.valueOf(100))));
+                amountFee = amountFee.add(NumberUtil.amountOfPercent(payment, percent));
                 if(currencyRounding){
-                    amountFee = amountFee.setScale(0, RoundingMode.HALF_UP);
-                    amountFee = amount.divide(BigDecimal.valueOf(100));
-                    amountFee = amountFee.setScale(0, RoundingMode.HALF_UP);
-                    amountFee = amount.subtract(BigDecimal.valueOf(100));
+                    amountFee = NumberUtil.currencyRoundUp(amountFee, BigDecimal.valueOf(100));
                 }
             }
         }

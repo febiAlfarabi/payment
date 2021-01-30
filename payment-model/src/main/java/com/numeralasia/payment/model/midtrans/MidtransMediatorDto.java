@@ -2,6 +2,7 @@ package com.numeralasia.payment.model.midtrans;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.numeralasia.payment.model.EBaseDto;
+import io.github.febialfarabi.utility.NumberUtil;
 import lombok.Data;
 import lombok.ToString;
 import org.apache.commons.lang.StringUtils;
@@ -36,12 +37,9 @@ public class MidtransMediatorDto extends EBaseDto {
         BigDecimal amountFee = BigDecimal.ZERO;
         if(payment!=null){
             if(percent!=null){
-                amountFee = amountFee.add(payment.multiply(BigDecimal.valueOf(percent).divide(BigDecimal.valueOf(100))));
+                amountFee = amountFee.add(NumberUtil.amountOfPercent(payment, percent));
                 if(currencyRounding){
-                    amountFee = amountFee.setScale(0, RoundingMode.HALF_UP);
-                    amountFee = amount.divide(BigDecimal.valueOf(100));
-                    amountFee = amountFee.setScale(0, RoundingMode.HALF_UP);
-                    amountFee = amount.subtract(BigDecimal.valueOf(100));
+                    amountFee = NumberUtil.currencyRoundUp(amountFee, BigDecimal.valueOf(100));
                 }
             }
         }
