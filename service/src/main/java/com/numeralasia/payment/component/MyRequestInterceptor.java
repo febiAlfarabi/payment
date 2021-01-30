@@ -11,6 +11,7 @@ import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Map;
 
@@ -27,7 +28,13 @@ public class MyRequestInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         HttpServletRequest requestCacheWrapperObject = new ContentCachingRequestWrapper(request);
-        Map map = requestCacheWrapperObject.getParameterMap();
+        String body = "" ;
+        try {
+            body = request.getReader().lines()
+                    .reduce("", (accumulator, actual) -> accumulator + actual);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         String incomingRequest = "### INCOMING REQUEST ### "+request.getRequestURI()+" :: ";
         for (String httpHeaderName : Collections.list(request.getHeaderNames())) {
             String value = request.getHeader(httpHeaderName);
@@ -36,7 +43,7 @@ public class MyRequestInterceptor extends HandlerInterceptorAdapter {
 
         String json = "NO_PARAM";
         try {
-            json = gson.toJson(map);
+            json = gson.toJson(body);
             incomingRequest = incomingRequest+json;
             logger.debug(TAG+" : {}", incomingRequest);
 //            String authorization = jwtTokenProvider.resolveToken(request);

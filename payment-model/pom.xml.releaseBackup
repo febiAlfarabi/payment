@@ -40,7 +40,7 @@
 
     <groupId>io.github.febialfarabi</groupId>
     <artifactId>payment-model</artifactId>
-    <version>1.0.15-SNAPSHOT</version>
+    <version>1.0.16-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -110,6 +110,12 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.febialfarabi</groupId>
+            <artifactId>utility</artifactId>
+            <version>1.0.15</version>
             <scope>provided</scope>
         </dependency>
 

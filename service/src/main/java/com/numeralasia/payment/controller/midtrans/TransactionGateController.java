@@ -37,7 +37,8 @@ public class TransactionGateController extends BasicController {
     }
 
     @PostMapping(path = "/snap/v1/transactions")
-    public ResponseEntity<MidtransChargeResponse> notification(@RequestHeader(Constant.REFERENCE) String referenceBase64, @RequestBody MidChargeRequest midChargeRequest) throws Exception {
+    public ResponseEntity<MidtransChargeResponse> notification(@RequestHeader(Constant.REFERENCE) String referenceBase64,
+                                                               @RequestBody MidChargeRequest midChargeRequest) throws Exception {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
         logger.debug("REFERENCE : {} ", reference);
         Client client = clientService.findByReference(reference);
