@@ -44,7 +44,7 @@ public class TransactionGateController extends BasicController {
     @PostMapping(path = "/snap/v1/transactions",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MidtransChargeResponse> notification(@RequestHeader(Constant.REFERENCE) String referenceBase64,
+    public MidtransChargeResponse notification(@RequestHeader(Constant.REFERENCE) String referenceBase64,
                                                                @RequestBody MidChargeRequest midChargeRequest) throws Exception {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
 //        String body = IOUtils.toString(request.getReader());
@@ -56,7 +56,7 @@ public class TransactionGateController extends BasicController {
         transactionGate.setOrderId(midChargeRequest.getTransactionDetails().getOrderId());
         MidtransChargeResponse midtransChargeResponse = midtransPaymentManager.charge(midChargeRequest);
         transactionGate = transactionGateService.save(transactionGate);
-        return ResponseEntity.ok(midtransChargeResponse);
+        return midtransChargeResponse;
     }
 
     @GetMapping(path = "/v2/{refCode}/status")
