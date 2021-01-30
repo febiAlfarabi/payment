@@ -44,16 +44,6 @@ public class MyRequestInterceptor extends HandlerInterceptorAdapter {
         try {
             incomingRequest = incomingRequest+body;
             logger.debug(TAG+" : {}", incomingRequest);
-//            String authorization = jwtTokenProvider.resolveToken(request);
-//            if(authorization!=null){
-//                logger.debug("AUTHORIZATION", authorization);
-//
-//                String email = jwtTokenProvider.getUsername(authorization);
-//                List<String> roles = jwtTokenProvider.getRoles(authorization);
-//                authorization = jwtTokenProvider.createToken(email, roles);
-//                response.setHeader(Constant.AUTHORIZATION, authorization);
-//                logger.debug(" New Authorization for Login id : {}, With role {}, in a response {} ", email, roles, authorization);
-//            }
         }catch (Exception ex) {
             ex.printStackTrace();
         }
