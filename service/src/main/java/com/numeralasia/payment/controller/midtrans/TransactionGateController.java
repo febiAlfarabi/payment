@@ -12,6 +12,7 @@ import com.numeralasia.payment.service.midtrans.TransactionGateService;
 import com.numeralasia.payment.util.Constant;
 import id.co.veritrans.mdk.v1.gateway.VtDirect;
 import io.github.febialfarabi.utility.Base64;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping(path = "${api}")
@@ -41,8 +43,10 @@ public class TransactionGateController extends BasicController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MidtransChargeResponse> notification(@RequestHeader(Constant.REFERENCE) String referenceBase64,
-                                                               @RequestBody MidChargeRequest midChargeRequest) throws Exception {
+                                                               HttpServletRequest request) throws Exception {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
+        String body = IOUtils.toString(request.getReader());
+        MidChargeRequest midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
         logger.debug("REFERENCE : {} ", reference);
         Client client = clientService.findByReference("pasarkerja");
         TransactionGate transactionGate = new TransactionGate();
