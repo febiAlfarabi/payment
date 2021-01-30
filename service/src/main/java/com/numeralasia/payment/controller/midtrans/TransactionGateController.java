@@ -40,11 +40,10 @@ public class TransactionGateController extends BasicController {
     @PostMapping(path = "/snap/v1/transactions",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MidtransChargeResponse> notification(@RequestHeader(Constant.REFERENCE) String referenceBase64,
+    public ResponseEntity<MidtransChargeResponse> notification(
                                                                @RequestBody MidChargeRequest midChargeRequest) throws Exception {
-        String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
-        logger.debug("REFERENCE : {} ", reference);
-        Client client = clientService.findByReference(reference);
+//        logger.debug("REFERENCE : {} ", reference);
+        Client client = clientService.findByReference("pasarkerja");
         TransactionGate transactionGate = new TransactionGate();
         transactionGate.setClient(client);
         transactionGate.setOrderId(midChargeRequest.getTransactionDetails().getOrderId());

@@ -1,6 +1,5 @@
 package com.numeralasia.payment;
 
-import com.numeralasia.payment.component.BodyReaderFilter;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,15 +32,6 @@ public class PaymentServiceApplication {
 
         thread.setDaemon(false);
         thread.start();
-    }
-
-    @Bean
-    public FilterRegistrationBean<BodyReaderFilter> Filters() {
-        FilterRegistrationBean<BodyReaderFilter> registrationBean = new FilterRegistrationBean<BodyReaderFilter>();
-        registrationBean.setFilter(new BodyReaderFilter());
-        registrationBean.addUrlPatterns("/**");
-        registrationBean.setName("bodyReaderFilter");
-        return registrationBean;
     }
 
 }
