@@ -46,7 +46,7 @@ public class TransactionGateController extends BasicController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MidtransChargeResponse> notification(@RequestHeader(Constant.REFERENCE) String referenceBase64,
                                                                HttpServletRequest request) throws Exception {
-        String reference = new String(Base64.decode(URLDecoder.decode(referenceBase64, "UTF-8"), Base64.NO_WRAP));
+        String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
         String body = IOUtils.toString(request.getReader());
         MidChargeRequest midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
         logger.debug("REFERENCE : {} ", reference);
