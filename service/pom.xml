@@ -316,7 +316,7 @@
         <dependency>
             <groupId>io.github.febialfarabi</groupId>
             <artifactId>utility</artifactId>
-            <version>1.0.15</version>
+            <version>1.0.18</version>
         </dependency>
 
     </dependencies>

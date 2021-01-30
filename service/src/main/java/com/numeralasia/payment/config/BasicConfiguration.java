@@ -6,8 +6,6 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.numeralasia.payment.util.Constant;
-import com.numeralasia.payment.util.DateAppConfig;
 import io.github.febialfarabi.utility.MSRestTemplate;
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
@@ -89,7 +87,7 @@ public class BasicConfiguration extends WebMvcConfigurerAdapter implements Appli
 
     @Bean
     Gson gson() {
-        GsonBuilder gsonBuilder = new GsonBuilder().setDateFormat(DateAppConfig.PARAM_DATE_FORMAT);
+        GsonBuilder gsonBuilder = new GsonBuilder();
         return gsonBuilder.create();
     }
 
