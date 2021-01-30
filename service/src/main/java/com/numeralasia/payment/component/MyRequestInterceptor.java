@@ -1,6 +1,7 @@
 package com.numeralasia.payment.component;
 
 import com.google.gson.Gson;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,8 +31,7 @@ public class MyRequestInterceptor extends HandlerInterceptorAdapter {
         HttpServletRequest requestCacheWrapperObject = new ContentCachingRequestWrapper(request);
         String body = "" ;
         try {
-            body = request.getReader().lines()
-                    .reduce("", (accumulator, actual) -> accumulator + actual);
+            body = IOUtils.toString(request.getReader());
         } catch (IOException e) {
             e.printStackTrace();
         }
