@@ -42,7 +42,7 @@ public class TransactionGateController extends BasicController {
     @PostMapping(path = "/snap/v1/transactions",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MidtransChargeResponse> notification(@RequestHeader(Constant.REFERENCE) String referenceBase64,
+    public ResponseEntity<MidtransChargeResponse> notification(@RequestParam(Constant.REFERENCE) String referenceBase64,
                                                                HttpServletRequest request) throws Exception {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
         String body = IOUtils.toString(request.getReader());
