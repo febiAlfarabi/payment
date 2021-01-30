@@ -19,8 +19,8 @@ public class CustomExpiry {
 
 
     @JsonProperty("order_time")
-//    @JsonSerialize(using = JsonDateTimeSerializer.class)
-//    @JsonDeserialize(using = JsonDateTimeDeserializer.class)
+    @JsonSerialize(using = JsonDateTimeSerializer.class)
+    @JsonDeserialize(using = JsonDateTimeDeserializer.class)
     Date orderTime ;
     @JsonProperty("expiry_duration")
     Integer expiryDuration ;

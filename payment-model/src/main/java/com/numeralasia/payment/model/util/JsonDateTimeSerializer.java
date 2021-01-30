@@ -24,7 +24,7 @@ public class JsonDateTimeSerializer extends JsonSerializer<Date> {
                 if(date==null){
                     return;
                 }
-                String formattedDate = dateTimeZoneFormatter.format(date);
+                String formattedDate = dateTimeFormat.format(date);
                 jsonGenerator.writeString(formattedDate);
                 success = true ;
             }catch (Exception e){
@@ -36,7 +36,7 @@ public class JsonDateTimeSerializer extends JsonSerializer<Date> {
                 if(date==null){
                     return;
                 }
-                String formattedDate = dateTimeFormat.format(date);
+                String formattedDate = dateTimeZoneFormatter.format(date);
                 jsonGenerator.writeString(formattedDate);
                 success = true ;
             }catch (Exception e){

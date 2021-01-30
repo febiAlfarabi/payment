@@ -21,21 +21,9 @@ public class JsonDateTimeDeserializer extends JsonDeserializer {
     public Date deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
         boolean success = false ;
         String dateString = jsonParser.getText();
-        if(StringUtils.isNotEmpty(dateString)){
-            dateString = dateString.replace("T", " ");
-        }
-        if(!success){
-            try {
-                if(StringUtils.isEmpty(dateString)){
-                    return null ;
-                }
-                Date date = dateTimeZoneFormatter.parse(dateString);
-                success = true ;
-                return date;
-            } catch (Exception e) {
-//                e.printStackTrace();
-            }
-        }
+//        if(StringUtils.isNotEmpty(dateString)){
+//            dateString = dateString.replace("T", " ");
+//        }
         if(!success){
             try {
                 if(StringUtils.isEmpty(dateString)){
@@ -47,6 +35,18 @@ public class JsonDateTimeDeserializer extends JsonDeserializer {
             } catch (Exception e) {
 //                e.printStackTrace();
 
+            }
+        }
+        if(!success){
+            try {
+                if(StringUtils.isEmpty(dateString)){
+                    return null ;
+                }
+                Date date = dateTimeZoneFormatter.parse(dateString);
+                success = true ;
+                return date;
+            } catch (Exception e) {
+//                e.printStackTrace();
             }
         }
         if(!success){
