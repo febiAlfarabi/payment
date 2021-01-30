@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.numeralasia.payment.util.JsonDateDeserializer;
+import com.numeralasia.payment.util.JsonDateTimeSerializer;
 import io.github.febialfarabi.utility.MSRestTemplate;
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
@@ -37,6 +39,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Locale;
 
 //import org.springframework.cache.gu;
@@ -88,6 +91,9 @@ public class BasicConfiguration extends WebMvcConfigurerAdapter implements Appli
     @Bean
     Gson gson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(Date.class, new JsonDateTimeSerializer());
+        gsonBuilder.registerTypeAdapter(Date.class, new JsonDateDeserializer());
+
         return gsonBuilder.create();
     }
 
