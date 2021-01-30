@@ -1,4 +1,4 @@
-package com.numeralasia.payment.util;
+package com.numeralasia.payment.model.util;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

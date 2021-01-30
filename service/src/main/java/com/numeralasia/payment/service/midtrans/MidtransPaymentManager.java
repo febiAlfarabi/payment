@@ -5,7 +5,7 @@ import com.numeralasia.payment.model.exception.AppException;
 import com.numeralasia.payment.model.midtrans.MidChargeRequest;
 import com.numeralasia.payment.model.midtrans.MidTransactionStatus;
 import com.numeralasia.payment.model.midtrans.MidtransChargeResponse;
-import com.numeralasia.payment.util.Constant;
+import com.numeralasia.payment.model.util.Constant;
 import id.co.veritrans.mdk.v1.VtGatewayConfigBuilder;
 import id.co.veritrans.mdk.v1.VtGatewayFactory;
 import id.co.veritrans.mdk.v1.config.EnvironmentType;

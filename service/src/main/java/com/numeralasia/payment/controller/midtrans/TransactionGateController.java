@@ -9,7 +9,7 @@ import com.numeralasia.payment.model.midtrans.MidtransChargeResponse;
 import com.numeralasia.payment.service.client.ClientService;
 import com.numeralasia.payment.service.midtrans.MidtransPaymentManager;
 import com.numeralasia.payment.service.midtrans.TransactionGateService;
-import com.numeralasia.payment.util.Constant;
+import com.numeralasia.payment.model.util.Constant;
 import id.co.veritrans.mdk.v1.gateway.VtDirect;
 import io.github.febialfarabi.utility.Base64;
 import org.apache.commons.io.IOUtils;

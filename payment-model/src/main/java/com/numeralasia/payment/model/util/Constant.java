@@ -1,4 +1,4 @@
-package com.numeralasia.payment.util;
+package com.numeralasia.payment.model.util;
 
 public class Constant {
 

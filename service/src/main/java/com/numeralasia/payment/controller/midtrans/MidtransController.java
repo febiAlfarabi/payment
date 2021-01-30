@@ -9,7 +9,7 @@ import com.numeralasia.payment.model.midtrans.MidTransactionStatus;
 import com.numeralasia.payment.model.midtrans.MidtransChargeResponse;
 import com.numeralasia.payment.service.midtrans.MidtransPaymentManager;
 import com.numeralasia.payment.service.midtrans.TransactionGateService;
-import com.numeralasia.payment.util.Constant;
+import com.numeralasia.payment.model.util.Constant;
 import id.co.veritrans.mdk.v1.gateway.VtDirect;
 import id.co.veritrans.mdk.v1.gateway.model.VtResponse;
 import org.modelmapper.TypeToken;
@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.PostConstruct;
 import java.lang.reflect.Type;
 import java.util.Arrays;
-import java.util.Base64;
 
 @RestController
 @RequestMapping(path = "${api}")

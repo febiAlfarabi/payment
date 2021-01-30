@@ -2,7 +2,7 @@ package com.numeralasia.payment.controller;
 
 import com.google.common.net.HttpHeaders;
 import com.numeralasia.payment.model.exception.AppException;
-import com.numeralasia.payment.util.Constant;
+import com.numeralasia.payment.model.util.Constant;
 import io.github.biezhi.webp.WebpIO;
 import io.github.biezhi.webp.WebpIOException;
 import io.github.febialfarabi.utility.MediaTypeUtils;

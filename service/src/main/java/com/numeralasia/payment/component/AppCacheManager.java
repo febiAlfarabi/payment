@@ -3,7 +3,7 @@ package com.numeralasia.payment.component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.numeralasia.payment.model.exception.AppException;
-import com.numeralasia.payment.util.Constant;
+import com.numeralasia.payment.model.util.Constant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

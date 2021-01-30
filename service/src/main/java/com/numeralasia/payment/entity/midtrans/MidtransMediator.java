@@ -2,7 +2,7 @@ package com.numeralasia.payment.entity.midtrans;
 
 import com.numeralasia.payment.component.Spring;
 import com.numeralasia.payment.entity.EBase;
-import com.numeralasia.payment.util.Constant;
+import com.numeralasia.payment.model.util.Constant;
 import com.numeralasia.payment.util.ServerUtils;
 import io.github.febialfarabi.utility.NumberUtil;
 import lombok.Data;
@@ -15,8 +15,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 
 @Data
 @Table(name="m_midtrans_mediator")

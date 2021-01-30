@@ -1,4 +1,4 @@
-package com.numeralasia.payment.util;
+package com.numeralasia.payment.model.util;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

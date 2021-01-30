@@ -6,7 +6,7 @@ import com.numeralasia.payment.model.exception.AppException;
 import com.numeralasia.payment.repository.EBaseRepository;
 import com.numeralasia.payment.repository.client.ClientRepository;
 import com.numeralasia.payment.service.BasicRepoService;
-import com.numeralasia.payment.util.Constant;
+import com.numeralasia.payment.model.util.Constant;
 import com.numeralasia.payment.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

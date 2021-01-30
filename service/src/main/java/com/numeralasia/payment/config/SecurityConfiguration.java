@@ -1,7 +1,7 @@
 package com.numeralasia.payment.config;
 
 import com.numeralasia.payment.security.JwtConfigurer;
-import com.numeralasia.payment.util.Constant;
+import com.numeralasia.payment.model.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -8,7 +8,7 @@ import com.numeralasia.payment.model.midtrans.MidtransFeeDto;
 import com.numeralasia.payment.model.midtrans.MidtransMediatorDto;
 import com.numeralasia.payment.service.client.ClientService;
 import com.numeralasia.payment.service.midtrans.MidtransMediatorService;
-import com.numeralasia.payment.util.Constant;
+import com.numeralasia.payment.model.util.Constant;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;

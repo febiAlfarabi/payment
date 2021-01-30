@@ -6,16 +6,15 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.numeralasia.payment.util.JsonDateDeserializer;
-import com.numeralasia.payment.util.JsonDateTimeDeserializer;
-import com.numeralasia.payment.util.JsonDateTimeSerializer;
+import com.numeralasia.payment.model.util.Constant;
+import com.numeralasia.payment.model.util.JsonDateTimeDeserializer;
+import com.numeralasia.payment.model.util.JsonDateTimeSerializer;
 import io.github.febialfarabi.utility.MSRestTemplate;
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.MessageSource;
@@ -92,6 +91,7 @@ public class BasicConfiguration extends WebMvcConfigurerAdapter implements Appli
     @Bean
     Gson gson() {
         GsonBuilder gsonBuilder = new GsonBuilder()
+                .setDateFormat(Constant.DATE_TIMEZONE_FORMAT)
                 .registerTypeAdapter(Date.class, new JsonDateTimeSerializer())
                 .registerTypeAdapter(Date.class, new JsonDateTimeDeserializer());
 

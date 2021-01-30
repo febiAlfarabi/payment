@@ -3,8 +3,8 @@ package com.numeralasia.payment.model.midtrans;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.numeralasia.payment.util.JsonDateTimeDeserializer;
-import com.numeralasia.payment.util.JsonDateTimeSerializer;
+import com.numeralasia.payment.model.util.JsonDateTimeDeserializer;
+import com.numeralasia.payment.model.util.JsonDateTimeSerializer;
 import lombok.Data;
 
 import java.util.Date;

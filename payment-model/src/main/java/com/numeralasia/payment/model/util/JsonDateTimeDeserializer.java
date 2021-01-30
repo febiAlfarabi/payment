@@ -1,9 +1,10 @@
-package com.numeralasia.payment.util;
+package com.numeralasia.payment.model.util;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.numeralasia.payment.model.util.Constant;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.IOException;
