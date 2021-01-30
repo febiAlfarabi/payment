@@ -25,6 +25,7 @@ git stash &&
 cd /opt/payment/master &&
 > "service/src/main/resources/application.properties" &&
 echo "spring.profiles.active=$ACTIVE_PROFILE" >> "service/src/main/resources/application.properties" &&
+mvn clean install -U &&
 (cd service && mvn clean install -U) &&
 yes | cp service/target/payment.jar /opt/payment/$API_DOMAIN_TLD/payment.jar &&
 sudo service $API_DOMAIN_TLD restart &&
