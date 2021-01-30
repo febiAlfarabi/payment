@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.numeralasia.payment.util.JsonDateDeserializer;
+import com.numeralasia.payment.util.JsonDateTimeDeserializer;
 import com.numeralasia.payment.util.JsonDateTimeSerializer;
 import io.github.febialfarabi.utility.MSRestTemplate;
 import org.modelmapper.Conditions;
@@ -92,7 +93,7 @@ public class BasicConfiguration extends WebMvcConfigurerAdapter implements Appli
     Gson gson() {
         GsonBuilder gsonBuilder = new GsonBuilder()
                 .registerTypeAdapter(Date.class, new JsonDateTimeSerializer())
-                .registerTypeAdapter(Date.class, new JsonDateDeserializer());
+                .registerTypeAdapter(Date.class, new JsonDateTimeDeserializer());
 
         return gsonBuilder.create();
     }
