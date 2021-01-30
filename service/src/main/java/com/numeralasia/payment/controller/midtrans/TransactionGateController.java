@@ -15,6 +15,7 @@ import io.github.febialfarabi.utility.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +37,9 @@ public class TransactionGateController extends BasicController {
         vtDirect = midtransPaymentManager.getVtGatewayFactory().vtDirect();
     }
 
-    @PostMapping(path = "/snap/v1/transactions")
+    @PostMapping(path = "/snap/v1/transactions",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MidtransChargeResponse> notification(@RequestHeader(Constant.REFERENCE) String referenceBase64,
                                                                @RequestBody MidChargeRequest midChargeRequest) throws Exception {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));

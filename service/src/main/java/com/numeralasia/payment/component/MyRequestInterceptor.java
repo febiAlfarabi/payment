@@ -29,7 +29,7 @@ public class MyRequestInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         HttpServletRequest requestCacheWrapperObject = new ContentCachingRequestWrapper(request);
-        String body = "" ;
+        String body = "NO_PARAM" ;
         try {
             body = IOUtils.toString(requestCacheWrapperObject.getReader());
         } catch (IOException e) {
@@ -41,10 +41,8 @@ public class MyRequestInterceptor extends HandlerInterceptorAdapter {
             logger.debug("===========>> Header name : {} #### Header value : {} ", httpHeaderName, value);
         }
 
-        String json = "NO_PARAM";
         try {
-            json = gson.toJson(body);
-            incomingRequest = incomingRequest+json;
+            incomingRequest = incomingRequest+body;
             logger.debug(TAG+" : {}", incomingRequest);
 //            String authorization = jwtTokenProvider.resolveToken(request);
 //            if(authorization!=null){
