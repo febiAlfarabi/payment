@@ -37,7 +37,7 @@ public class MyRequestInterceptor extends HandlerInterceptorAdapter {
         }
         String incomingRequest = "### INCOMING REQUEST ### "+requestCacheWrapperObject.getRequestURI()+" :: ";
         for (String httpHeaderName : Collections.list(requestCacheWrapperObject.getHeaderNames())) {
-            String value = request.getHeader(httpHeaderName);
+            String value = requestCacheWrapperObject.getHeader(httpHeaderName);
             logger.debug("===========>> Header name : {} #### Header value : {} ", httpHeaderName, value);
         }
 
