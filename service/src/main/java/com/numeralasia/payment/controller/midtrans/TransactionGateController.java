@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import java.net.URLDecoder;
 
 @RestController
 @RequestMapping(path = "${api}")
@@ -45,7 +46,7 @@ public class TransactionGateController extends BasicController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MidtransChargeResponse> notification(@RequestHeader(HttpHeaders.USER_AGENT) String referenceBase64,
                                                                HttpServletRequest request) throws Exception {
-        String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
+        String reference = new String(Base64.decode(URLDecoder.decode(referenceBase64, "UTF-8"), Base64.NO_WRAP));
         String body = IOUtils.toString(request.getReader());
         MidChargeRequest midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
         logger.debug("REFERENCE : {} ", reference);
