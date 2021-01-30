@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 
 @Data
 @Table(name="m_midtrans_mediator")
@@ -45,15 +47,21 @@ public class MidtransMediator extends EBase {
     String imageLink ;
 
     @Transient
-    public BigDecimal amountFee(BigDecimal payment){
+    public BigDecimal amountFee(BigDecimal payment, boolean currencyRounding){
         BigDecimal amountFee = BigDecimal.ZERO;
         if(payment!=null){
             if(percent!=null){
                 amountFee = amountFee.add(payment.multiply(BigDecimal.valueOf(percent).divide(BigDecimal.valueOf(100))));
+                if(currencyRounding){
+                    amountFee = amountFee.setScale(0, RoundingMode.HALF_UP);
+                    amountFee = amount.divide(BigDecimal.valueOf(100));
+                    amountFee = amountFee.setScale(0, RoundingMode.HALF_UP);
+                    amountFee = amount.subtract(BigDecimal.valueOf(100));
+                }
             }
-            if(amount!=null){
-                amountFee = amountFee.add(amount);
-            }
+        }
+        if(amount!=null){
+            amountFee = amountFee.add(amount);
         }
         return amountFee ;
     }
