@@ -90,7 +90,7 @@ public class BasicConfiguration extends WebMvcConfigurerAdapter implements Appli
 
 
     @Bean
-    Gson gson() {
+    public Gson gson() {
         GsonBuilder gsonBuilder = new GsonBuilder().setDateFormat(Constant.API_DATE_TIME_FORMAT);
 //                .registerTypeAdapter(Date.class, new JsonDateTimeSerializer())
 //                .registerTypeAdapter(Date.class, new JsonDateTimeDeserializer());
