@@ -42,7 +42,7 @@ public class ClientService extends BasicRepoService<Client> {
         buildClient();
     }
 
-    @Value("classpath:"+ Constant.MASTER_CLIENT_JSON_FILE)
+    @Value("classpath:"+ com.numeralasia.payment.util.Constant.MASTER_CLIENT_JSON_FILE)
     Resource masterClientResource ;
     void buildClient(){
         HashMap<Integer, String> map = new HashMap<>();
