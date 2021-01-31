@@ -46,7 +46,7 @@ public class TransactionGateController extends BasicController {
             produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public MidtransChargeResponse notification(@RequestHeader(Constant.REFERENCE) String referenceBase64,
-                                                               @RequestBody(required = false) MidChargeRequest midChargeRequest, HttpServletRequest request) throws Exception {
+                                               @RequestBody(required = false) MidChargeRequest midChargeRequest, HttpServletRequest request) throws Exception {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
         CachedBodyHttpServletRequest cachedBodyHttpServletRequest = new CachedBodyHttpServletRequest(request);
         if(midChargeRequest==null){
@@ -66,8 +66,33 @@ public class TransactionGateController extends BasicController {
         return midtransChargeResponse;
     }
 
-    @GetMapping(path = "/v2/{refCode}/status")
-    public ResponseEntity<MidTransactionStatus> notification(@PathVariable String refCode) {
+    @PostMapping(path = "/v2/{refCode}/cancel")
+    @ResponseBody
+    public ResponseEntity<MidTransactionStatus> cancelPayment(
+            @RequestHeader(Constant.REFERENCE) String referenceBase64,
+            @PathVariable String refCode) {
+        String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
+        Client client = clientService.findByReference(reference);
+        MidTransactionStatus midTransactionStatus = midtransPaymentManager.cancelPayment(refCode);
+        return ResponseEntity.ok(midTransactionStatus);
+    }
+    @PostMapping(path = "/v2/{refCode}/expire")
+    @ResponseBody
+    public ResponseEntity<MidTransactionStatus> expirePayment(
+            @RequestHeader(Constant.REFERENCE) String referenceBase64,
+            @PathVariable String refCode) {
+        String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
+        Client client = clientService.findByReference(reference);
+        MidTransactionStatus midTransactionStatus = midtransPaymentManager.expirePayment(refCode);
+        return ResponseEntity.ok(midTransactionStatus);
+    }
+    @PostMapping(path = "/v2/{refCode}/status")
+    @ResponseBody
+    public ResponseEntity<MidTransactionStatus> checkStatus(
+            @RequestHeader(Constant.REFERENCE) String referenceBase64,
+            @PathVariable String refCode) {
+        String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
+        Client client = clientService.findByReference(reference);
         MidTransactionStatus midTransactionStatus = midtransPaymentManager.checkStatus(refCode);
         return ResponseEntity.ok(midTransactionStatus);
     }

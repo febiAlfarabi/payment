@@ -103,6 +103,71 @@ public class MidtransPaymentManager {
         }
     }
 
+    public MidTransactionStatus cancelPayment(String refCode) {
+        String url = midtransApiDomain + "/v2/" + refCode + "/cancel";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.add(HttpHeaders.AUTHORIZATION, "Basic " + Base64.getEncoder().encodeToString((midtransServerKey + ":").getBytes()));
+        HttpEntity<MidChargeRequest> entity = new HttpEntity(headers);
+        logger.debug("HIT :: {} ", url);
+        headers.entrySet().forEach(stringListEntry -> {
+            logger.debug("HIT Header name : {} #### Header value : {} ", stringListEntry.getKey(), stringListEntry.getValue());
+        });
+
+        Type type = new TypeToken<MidTransactionStatus>() {}.getType();
+        try {
+            ResponseEntity responseEntity = msRestTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+            if (responseEntity.getStatusCode() == HttpStatus.OK) {
+                String bodyString = responseEntity.getBody().toString();
+                MidTransactionStatus midTransactionStatus = gson.fromJson(bodyString, type);
+                logger.debug("BODY RESPONSE {} ", midTransactionStatus);
+                return midTransactionStatus;
+            } else {
+                throw new AppException(Constant.FAILED_CODE, responseEntity.toString());
+            }
+        } catch (HttpClientErrorException e) {
+            e.printStackTrace();
+            String body = e.getResponseBodyAsString();
+            logger.debug("BODY RESPONSE {} ", body);
+            throw new AppException(Constant.FAILED_CODE, body);
+
+        }
+    }
+
+    public MidTransactionStatus expirePayment(String refCode) {
+        String url = midtransApiDomain + "/v2/" + refCode + "/expire";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.add(HttpHeaders.AUTHORIZATION, "Basic " + Base64.getEncoder().encodeToString((midtransServerKey + ":").getBytes()));
+        HttpEntity<MidChargeRequest> entity = new HttpEntity(headers);
+        logger.debug("HIT :: {} ", url);
+        headers.entrySet().forEach(stringListEntry -> {
+            logger.debug("HIT Header name : {} #### Header value : {} ", stringListEntry.getKey(), stringListEntry.getValue());
+        });
+
+        Type type = new TypeToken<MidTransactionStatus>() {}.getType();
+        try {
+            ResponseEntity responseEntity = msRestTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+            if (responseEntity.getStatusCode() == HttpStatus.OK) {
+                String bodyString = responseEntity.getBody().toString();
+                MidTransactionStatus midTransactionStatus = gson.fromJson(bodyString, type);
+                logger.debug("BODY RESPONSE {} ", midTransactionStatus);
+                return midTransactionStatus;
+            } else {
+                throw new AppException(Constant.FAILED_CODE, responseEntity.toString());
+            }
+        } catch (HttpClientErrorException e) {
+            e.printStackTrace();
+            String body = e.getResponseBodyAsString();
+            logger.debug("BODY RESPONSE {} ", body);
+            throw new AppException(Constant.FAILED_CODE, body);
+
+        }
+    }
+
+
     public MidTransactionStatus checkStatus(String refCode) {
         String url = midtransApiDomain + "/v2/" + refCode + "/status";
         HttpHeaders headers = new HttpHeaders();
@@ -133,8 +198,8 @@ public class MidtransPaymentManager {
             throw new AppException(Constant.FAILED_CODE, body);
 
         }
-
     }
+
 
     public VtGatewayFactory getVtGatewayFactory() {
         return vtGatewayFactory;
