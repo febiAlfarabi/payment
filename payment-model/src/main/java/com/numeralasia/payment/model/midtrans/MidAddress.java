@@ -25,8 +25,8 @@ public class MidAddress implements Serializable {
     @SerializedName("postal_code")
     String postalCode;
     String phone;
-    @JsonProperty("postal_code")
-    @SerializedName("postal_code")
+    @JsonProperty("country_code")
+    @SerializedName("country_code")
     String countryCode;
 
     public MidAddress() {
