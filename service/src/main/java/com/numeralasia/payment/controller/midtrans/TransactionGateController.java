@@ -49,7 +49,7 @@ public class TransactionGateController extends BasicController {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
 //        String body = IOUtils.toString(request.getReader());
 //        MidChargeRequest midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
-        CachedBodyHttpServletRequest cachedBodyHttpServletRequest = new CachedBodyHttpServletRequest(httpServletRequest);
+        CachedBodyHttpServletRequest cachedBodyHttpServletRequest = new CachedBodyHttpServletRequest(request);
         if(midChargeRequest==null){
             String body = IOUtils.toString(cachedBodyHttpServletRequest.getReader());
             midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
