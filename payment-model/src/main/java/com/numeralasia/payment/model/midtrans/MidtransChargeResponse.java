@@ -17,4 +17,9 @@ public class MidtransChargeResponse implements Serializable {
     @SerializedName("redirect_url")
     String redirectUrl;
 
+
+    @JsonProperty("client_key")
+    @SerializedName("client_key")
+    String clientKey;
+
 }

@@ -90,6 +90,7 @@ public class MidtransPaymentManager {
             if(responseEntity.getStatusCode()==HttpStatus.CREATED){
                 MidtransChargeResponse midtransChargeResponse = responseEntity.getBody();
                 logger.debug("BODY RESPONSE {} ", midtransChargeResponse);
+
                 return midtransChargeResponse;
             }else{
                 throw new AppException(Constant.FAILED_CODE, responseEntity.toString());
