@@ -3,9 +3,9 @@ package com.numeralasia.payment.controller.client;
 import com.numeralasia.payment.controller.BasicController;
 import com.numeralasia.payment.entity.client.Client;
 import com.numeralasia.payment.model.WSResponse;
-import com.numeralasia.payment.model.midtrans.MidtransFeeDto;
-import com.numeralasia.payment.service.client.ClientService;
+import com.numeralasia.payment.model.client.ClientDto;
 import com.numeralasia.payment.model.util.Constant;
+import com.numeralasia.payment.service.client.ClientService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,7 +37,7 @@ public class ClientController extends BasicController {
     @PostMapping(path = "/client/save")
     @ApiOperation(value = "")
     public WSResponse save(
-            @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization, @RequestBody @Valid MidtransFeeDto clientDto){
+            @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization, @RequestBody @Valid ClientDto clientDto){
         Client client = modelMapper.map(clientDto, Client.class);
         boolean newdata = client.getId()==null || client.getId()==0 ;
         client = clientService.save(client);

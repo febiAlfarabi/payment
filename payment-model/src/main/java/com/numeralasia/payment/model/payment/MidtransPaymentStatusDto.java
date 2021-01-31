@@ -1,4 +1,4 @@
-package com.numeralasia.payment.model.midtrans;
+package com.numeralasia.payment.model.payment;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

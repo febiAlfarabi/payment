@@ -7,8 +7,10 @@ package com.numeralasia.payment.model.midtrans;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class MidTransactionItem {
+public class MidTransactionItem implements Serializable {
     String id;
     String name;
     Long price;

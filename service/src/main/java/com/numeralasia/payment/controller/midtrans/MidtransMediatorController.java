@@ -4,11 +4,10 @@ import com.numeralasia.payment.controller.BasicController;
 import com.numeralasia.payment.entity.client.Client;
 import com.numeralasia.payment.entity.midtrans.MidtransMediator;
 import com.numeralasia.payment.model.WSResponse;
-import com.numeralasia.payment.model.midtrans.MidtransFeeDto;
-import com.numeralasia.payment.model.midtrans.MidtransMediatorDto;
+import com.numeralasia.payment.model.payment.MidtransMediatorDto;
+import com.numeralasia.payment.model.util.Constant;
 import com.numeralasia.payment.service.client.ClientService;
 import com.numeralasia.payment.service.midtrans.MidtransMediatorService;
-import com.numeralasia.payment.model.util.Constant;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -68,7 +67,7 @@ public class MidtransMediatorController extends BasicController {
     @PostMapping(path = "/midtransMediator/save")
     @ApiOperation(value = "")
     public WSResponse save(
-            @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization, @RequestBody @Valid MidtransFeeDto midtransMediatorDto){
+            @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization, @RequestBody @Valid MidtransMediatorDto midtransMediatorDto){
         MidtransMediator midtransMediator = modelMapper.map(midtransMediatorDto, MidtransMediator.class);
         boolean newdata = midtransMediator.getId()==null || midtransMediator.getId()==0 ;
         midtransMediator = midtransMediatorService.save(midtransMediator);

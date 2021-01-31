@@ -1,4 +1,4 @@
-package com.numeralasia.payment.model.midtrans;
+package com.numeralasia.payment.model.payment;
 
 import com.numeralasia.payment.model.EBaseDto;
 import com.numeralasia.payment.model.client.ClientDto;

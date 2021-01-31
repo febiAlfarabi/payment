@@ -6,13 +6,18 @@
 package com.numeralasia.payment.model.midtrans;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class MidTransactionDetails {
+public class MidTransactionDetails implements Serializable {
     @JsonProperty("order_id")
+    @SerializedName("order_id")
     String orderId;
     @JsonProperty("gross_amount")
+    @SerializedName("gross_amount")
     Long grossAmount;
 
     public MidTransactionDetails() {

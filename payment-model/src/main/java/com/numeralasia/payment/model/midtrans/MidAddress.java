@@ -6,20 +6,27 @@
 package com.numeralasia.payment.model.midtrans;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class MidAddress {
+public class MidAddress implements Serializable {
     @JsonProperty("first_name")
+    @SerializedName("first_name")
     String firstName;
     @JsonProperty("last_name")
+    @SerializedName("last_name")
     String lastName;
     String address;
     String city;
     @JsonProperty("postal_code")
+    @SerializedName("postal_code")
     String postalCode;
     String phone;
-    @JsonProperty("country_code")
+    @JsonProperty("postal_code")
+    @SerializedName("postal_code")
     String countryCode;
 
     public MidAddress() {

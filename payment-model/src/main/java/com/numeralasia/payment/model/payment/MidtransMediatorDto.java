@@ -1,6 +1,8 @@
-package com.numeralasia.payment.model.midtrans;
+package com.numeralasia.payment.model.payment;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import com.numeralasia.payment.model.EBaseDto;
 import io.github.febialfarabi.utility.NumberUtil;
 import lombok.Data;
