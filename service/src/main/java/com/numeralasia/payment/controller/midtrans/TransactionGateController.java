@@ -44,10 +44,14 @@ public class TransactionGateController extends BasicController {
     @PostMapping(path = "/snap/v1/transactions",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public MidtransChargeResponse notification(@RequestHeader(Constant.REFERENCE) String referenceBase64,
-                                                               @RequestBody MidChargeRequest midChargeRequest) throws Exception {
+                                                               @RequestBody(required = false) MidChargeRequest midChargeRequest, HttpServletRequest request) throws Exception {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
 //        String body = IOUtils.toString(request.getReader());
 //        MidChargeRequest midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
+        if(midChargeRequest==null){
+            String body = IOUtils.toString(request.getReader());
+            midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
+        }
         logger.debug("REFERENCE : {} ", reference);
         Client client = clientService.findByReference(reference);
         TransactionGate transactionGate = new TransactionGate();
