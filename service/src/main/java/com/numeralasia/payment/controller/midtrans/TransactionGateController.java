@@ -10,6 +10,7 @@ import com.numeralasia.payment.service.client.ClientService;
 import com.numeralasia.payment.service.midtrans.MidtransPaymentManager;
 import com.numeralasia.payment.service.midtrans.TransactionGateService;
 import com.numeralasia.payment.model.util.Constant;
+import com.numeralasia.payment.util.CachedBodyHttpServletRequest;
 import id.co.veritrans.mdk.v1.gateway.VtDirect;
 import io.github.febialfarabi.utility.Base64;
 import org.apache.commons.io.IOUtils;
@@ -48,8 +49,9 @@ public class TransactionGateController extends BasicController {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
 //        String body = IOUtils.toString(request.getReader());
 //        MidChargeRequest midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
+        CachedBodyHttpServletRequest cachedBodyHttpServletRequest = new CachedBodyHttpServletRequest(httpServletRequest);
         if(midChargeRequest==null){
-            String body = IOUtils.toString(request.getReader());
+            String body = IOUtils.toString(cachedBodyHttpServletRequest.getReader());
             midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
         }
         logger.debug("REFERENCE : {} ", reference);
