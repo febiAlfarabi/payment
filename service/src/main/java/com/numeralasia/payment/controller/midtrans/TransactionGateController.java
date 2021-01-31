@@ -41,9 +41,7 @@ public class TransactionGateController extends BasicController {
         vtDirect = midtransPaymentManager.getVtGatewayFactory().vtDirect();
     }
 
-    @PostMapping(path = "/snap/v1/transactions",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/snap/v1/transactions")
     public MidtransChargeResponse notification(@RequestHeader(Constant.REFERENCE) String referenceBase64,
                                                                @RequestBody MidChargeRequest midChargeRequest) throws Exception {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
