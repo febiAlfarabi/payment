@@ -31,6 +31,12 @@ public class MidTransactionStatus implements Serializable {
     public static final String FRAUD_STATUS_CHALLENGE = "challenge";
     public static final String FRAUD_STATUS_DENY = "deny";
 
+    public boolean isPending(){
+        return (
+                org.apache.commons.lang.StringUtils.equals(statusCode, PENDING_CODE) &&
+                        org.apache.commons.lang.StringUtils.equals(transactionStatus, TRANSACTION_STATUS_PENDING));
+    }
+
     public boolean isSucceed(){
         return (
                 org.apache.commons.lang.StringUtils.equals(statusCode, SUCCESS_CODE) &&
@@ -109,6 +115,7 @@ public class MidTransactionStatus implements Serializable {
     @JsonProperty("pdf_url")
     @SerializedName("pdf_url")
     String pdfUrl;
+
 
     @JsonProperty("finish_redirect_url")
     @SerializedName("finish_redirect_url")
