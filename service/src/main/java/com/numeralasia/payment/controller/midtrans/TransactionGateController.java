@@ -52,6 +52,8 @@ public class TransactionGateController extends BasicController {
             String body = IOUtils.toString(cachedBodyHttpServletRequest.getInputStream());
             logger.debug("BODY : {} ", body);
             midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
+        }else{
+            logger.debug("midChargeRequest @BODY : {} ", gson.toJson(midChargeRequest));
         }
         logger.debug("REFERENCE : {} ", reference);
         Client client = clientService.findByReference(reference);
