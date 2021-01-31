@@ -89,8 +89,8 @@ public class MidtransPaymentManager {
             ResponseEntity<MidtransChargeResponse> responseEntity = msRestTemplate.exchange(url, HttpMethod.POST, entity, ParameterizedTypeReference.forType(type));
             if(responseEntity.getStatusCode()==HttpStatus.CREATED){
                 MidtransChargeResponse midtransChargeResponse = responseEntity.getBody();
+                midtransChargeResponse.setClientKey(midtransClientKey);
                 logger.debug("BODY RESPONSE {} ", midtransChargeResponse);
-
                 return midtransChargeResponse;
             }else{
                 throw new AppException(Constant.FAILED_CODE, responseEntity.toString());
