@@ -51,7 +51,7 @@ public class TransactionGateController extends BasicController {
 //        MidChargeRequest midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
         CachedBodyHttpServletRequest cachedBodyHttpServletRequest = new CachedBodyHttpServletRequest(request);
         if(midChargeRequest==null){
-            String body = IOUtils.toString(cachedBodyHttpServletRequest.getReader());
+            String body = IOUtils.toString(cachedBodyHttpServletRequest.getInputStream());
             midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
         }
         logger.debug("REFERENCE : {} ", reference);
