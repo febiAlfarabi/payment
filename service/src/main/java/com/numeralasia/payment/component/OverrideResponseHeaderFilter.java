@@ -43,7 +43,7 @@ public class OverrideResponseHeaderFilter implements Filter {
         }catch (Exception ex) {
             ex.printStackTrace();
         }
-        chain.doFilter(httpServletRequest, httpServletResponse);
+        chain.doFilter(cachedBodyHttpServletRequest, httpServletResponse);
     }
 
 

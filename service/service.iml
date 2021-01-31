@@ -249,9 +249,9 @@
     <orderEntry type="library" name="Maven: org.reflections:reflections:0.9.11" level="project" />
     <orderEntry type="library" name="Maven: com.jcraft:jsch:0.1.55" level="project" />
     <orderEntry type="library" name="Maven: io.github.febialfarabi:sumatera:1.0.21" level="project" />
-    <orderEntry type="library" name="Maven: io.github.febialfarabi:payment-model:1.0.18" level="project" />
+    <orderEntry type="module" module-name="payment-model" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.github.febialfarabi:utility:1.0.18" level="project" />
+    <orderEntry type="library" name="Maven: io.github.febialfarabi:utility:1.0.20" level="project" />
     <orderEntry type="library" name="Maven: net.sourceforge.streamsupport:android-retrostreams:1.7.2" level="project" />
   </component>
 </module>
