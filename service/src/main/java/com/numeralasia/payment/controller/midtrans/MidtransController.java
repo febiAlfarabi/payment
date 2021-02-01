@@ -42,9 +42,9 @@ public class MidtransController extends BasicController {
     @PostMapping(path = "/midtrans/notification")
     public WSResponse notification(@RequestBody MidTransactionStatus midTransactionStatus) throws Exception {
         logger.debug("#### MIDTRANS NOTIFICATION LISTENER ##### {} ",gson.toJson(midTransactionStatus));
-        String orderId  = midTransactionStatus.getOrderId();
-        VtResponse res = vtDirect.status(orderId);
-        TransactionGate transactionGate = transactionGateService.findByOrderId(orderId);
+        String paymentId  = midTransactionStatus.getOrderId();
+        VtResponse res = vtDirect.status(paymentId);
+        TransactionGate transactionGate = transactionGateService.findByPaymentId(paymentId);
         Client client = transactionGate.getClient();
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));

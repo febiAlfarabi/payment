@@ -103,8 +103,8 @@ public class MidtransPaymentManager {
         }
     }
 
-    public MidTransactionStatus cancelPayment(String refCode) {
-        String url = midtransApiDomain + "/v2/" + refCode + "/cancel";
+    public MidTransactionStatus cancelPayment(String paymentId) {
+        String url = midtransApiDomain + "/v2/" + paymentId + "/cancel";
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -135,8 +135,8 @@ public class MidtransPaymentManager {
         }
     }
 
-    public MidTransactionStatus expirePayment(String refCode) {
-        String url = midtransApiDomain + "/v2/" + refCode + "/expire";
+    public MidTransactionStatus expirePayment(String paymentId) {
+        String url = midtransApiDomain + "/v2/" + paymentId + "/expire";
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -168,8 +168,8 @@ public class MidtransPaymentManager {
     }
 
 
-    public MidTransactionStatus checkStatus(String refCode) {
-        String url = midtransApiDomain + "/v2/" + refCode + "/status";
+    public MidTransactionStatus checkStatus(String paymentId) {
+        String url = midtransApiDomain + "/v2/" + paymentId + "/status";
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);

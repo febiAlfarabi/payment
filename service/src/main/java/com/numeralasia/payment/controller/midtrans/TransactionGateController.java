@@ -48,54 +48,53 @@ public class TransactionGateController extends BasicController {
     public MidtransChargeResponse transactions(@RequestHeader(Constant.REFERENCE) String referenceBase64,
                                                @RequestBody(required = false) MidChargeRequest midChargeRequest, HttpServletRequest request) throws Exception {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
-        CachedBodyHttpServletRequest cachedBodyHttpServletRequest = new CachedBodyHttpServletRequest(request);
-        if(midChargeRequest==null){
-            String body = IOUtils.toString(cachedBodyHttpServletRequest.getInputStream());
-            logger.debug("BODY : {} ", body);
-            midChargeRequest = gson.fromJson(body, MidChargeRequest.class);
-        }else{
-            logger.debug("midChargeRequest @BODY : {} ", gson.toJson(midChargeRequest));
-        }
-        logger.debug("REFERENCE : {} ", reference);
         Client client = clientService.findByReference(reference);
+
+        /*GENERATE PAYMENT ID AND REVERSE ORDER ID*/
+        String orderId = midChargeRequest.getTransactionDetails().getOrderId();
+        String paymentId = transactionGateService.buildPaymentId(client, orderId);
+        midChargeRequest.getTransactionDetails().setOrderId(paymentId);
+        midChargeRequest.getTransactionDetails().setPaymentId(paymentId);
+
         TransactionGate transactionGate = new TransactionGate();
         transactionGate.setClient(client);
-        transactionGate.setOrderId(midChargeRequest.getTransactionDetails().getOrderId());
-        transactionGate.setPaymentId(transactionGateService.buildPaymentId(client, midChargeRequest.getTransactionDetails().getOrderId()));
+        transactionGate.setOrderId(orderId);
+        transactionGate.setPaymentId(paymentId);
+
         MidtransChargeResponse midtransChargeResponse = midtransPaymentManager.charge(midChargeRequest);
-        midtransChargeResponse.setPaymentId(transactionGate.getPaymentId());
+        midtransChargeResponse.setPaymentId(paymentId);
         transactionGate = transactionGateService.save(transactionGate);
         return midtransChargeResponse;
     }
 
-    @PostMapping(path = "/v2/{refCode}/cancel")
+    @PostMapping(path = "/v2/{paymentId}/cancel")
     @ResponseBody
     public ResponseEntity<MidTransactionStatus> cancelPayment(
             @RequestHeader(Constant.REFERENCE) String referenceBase64,
-            @PathVariable String refCode) {
+            @PathVariable String paymentId) {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
         Client client = clientService.findByReference(reference);
-        MidTransactionStatus midTransactionStatus = midtransPaymentManager.cancelPayment(refCode);
+        MidTransactionStatus midTransactionStatus = midtransPaymentManager.cancelPayment(paymentId);
         return ResponseEntity.ok(midTransactionStatus);
     }
     @PostMapping(path = "/v2/{refCode}/expire")
     @ResponseBody
     public ResponseEntity<MidTransactionStatus> expirePayment(
             @RequestHeader(Constant.REFERENCE) String referenceBase64,
-            @PathVariable String refCode) {
+            @PathVariable String paymentId) {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
         Client client = clientService.findByReference(reference);
-        MidTransactionStatus midTransactionStatus = midtransPaymentManager.expirePayment(refCode);
+        MidTransactionStatus midTransactionStatus = midtransPaymentManager.expirePayment(paymentId);
         return ResponseEntity.ok(midTransactionStatus);
     }
     @PostMapping(path = "/v2/{refCode}/status")
     @ResponseBody
     public ResponseEntity<MidTransactionStatus> checkStatus(
             @RequestHeader(Constant.REFERENCE) String referenceBase64,
-            @PathVariable String refCode) {
+            @PathVariable String paymentId) {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
         Client client = clientService.findByReference(reference);
-        MidTransactionStatus midTransactionStatus = midtransPaymentManager.checkStatus(refCode);
+        MidTransactionStatus midTransactionStatus = midtransPaymentManager.checkStatus(paymentId);
         return ResponseEntity.ok(midTransactionStatus);
     }
 

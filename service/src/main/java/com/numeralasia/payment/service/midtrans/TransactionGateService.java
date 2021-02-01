@@ -20,9 +20,10 @@ public class TransactionGateService extends BasicRepoService<TransactionGate> {
         return repository;
     }
 
-    public TransactionGate findByOrderId(String orderId){
-        return repository.findByOrderId(orderId).orElseThrow(() -> new AppException(Constant.FAILED_CODE, "Order ID "+orderId+" : not found"));
-    }
+//    public TransactionGate findByOrderId(String orderId){
+//        return repository.findByOrderId(orderId).orElseThrow(() -> new AppException(Constant.FAILED_CODE, "Order ID "+orderId+" : not found"));
+//    }
+
     public TransactionGate findByPaymentId(String paymentId){
         return repository.findByPaymentId(paymentId).orElseThrow(() -> new AppException(Constant.FAILED_CODE, "Payment ID "+paymentId+" : not found"));
     }
