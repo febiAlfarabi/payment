@@ -50,11 +50,12 @@ public class TransactionGateController extends BasicController {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
         Client client = clientService.findByReference(reference);
 
-        /*GENERATE PAYMENT ID AND REVERSE ORDER ID*/
+        /*START GENERATE PAYMENT ID AND REVERSE ORDER ID*/
         String orderId = midChargeRequest.getTransactionDetails().getOrderId();
         String paymentId = transactionGateService.buildPaymentId(client, orderId);
         midChargeRequest.getTransactionDetails().setOrderId(paymentId);
         midChargeRequest.getTransactionDetails().setPaymentId(paymentId);
+        /*END GENERATE PAYMENT ID AND REVERSED ORDER ID*/
 
         TransactionGate transactionGate = new TransactionGate();
         transactionGate.setClient(client);
@@ -77,7 +78,7 @@ public class TransactionGateController extends BasicController {
         MidTransactionStatus midTransactionStatus = midtransPaymentManager.cancelPayment(paymentId);
         return ResponseEntity.ok(midTransactionStatus);
     }
-    @PostMapping(path = "/v2/{refCode}/expire")
+    @PostMapping(path = "/v2/{paymentId}/expire")
     @ResponseBody
     public ResponseEntity<MidTransactionStatus> expirePayment(
             @RequestHeader(Constant.REFERENCE) String referenceBase64,
@@ -87,7 +88,7 @@ public class TransactionGateController extends BasicController {
         MidTransactionStatus midTransactionStatus = midtransPaymentManager.expirePayment(paymentId);
         return ResponseEntity.ok(midTransactionStatus);
     }
-    @PostMapping(path = "/v2/{refCode}/status")
+    @PostMapping(path = "/v2/{paymentId}/status")
     @ResponseBody
     public ResponseEntity<MidTransactionStatus> checkStatus(
             @RequestHeader(Constant.REFERENCE) String referenceBase64,
