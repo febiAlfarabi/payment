@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -16,10 +17,12 @@ import javax.persistence.Table;
 public class Client extends EBase {
 
     String name ;
+    @Column(unique = true)
     String reference ;
     String serviceAddress ;
     String companyClass ;
     String domainClass ;
     String notificationEndpoint ;
+    @Column(unique = true)
     String paymentPrefixId;
 }
