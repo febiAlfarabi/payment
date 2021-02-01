@@ -1,5 +1,6 @@
 package com.numeralasia.payment.service.midtrans;
 
+import com.numeralasia.payment.entity.client.Client;
 import com.numeralasia.payment.entity.midtrans.TransactionGate;
 import com.numeralasia.payment.model.exception.AppException;
 import com.numeralasia.payment.repository.EBaseRepository;
@@ -24,6 +25,10 @@ public class TransactionGateService extends BasicRepoService<TransactionGate> {
     }
     public TransactionGate findByPaymentId(String paymentId){
         return repository.findByPaymentId(paymentId).orElseThrow(() -> new AppException(Constant.FAILED_CODE, "Payment ID "+paymentId+" : not found"));
+    }
+
+    public String buildPaymentId(Client client, String orderId){
+        return client.getPaymentPrefixId()+"-"+orderId;
     }
 
 

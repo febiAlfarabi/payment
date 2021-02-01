@@ -21,4 +21,8 @@ public class MidtransChargeResponse implements Serializable {
     @SerializedName("client_key")
     String clientKey;
 
+    @JsonProperty("payment_id")
+    @SerializedName("payment_id")
+    String paymentId;
+
 }
