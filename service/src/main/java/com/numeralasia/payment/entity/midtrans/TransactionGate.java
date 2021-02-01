@@ -18,8 +18,10 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true, of = "id")
 public class TransactionGate extends EBase {
 
-    @Column(unique = true)
     String orderId ;
+
+    @Column(unique = true)
+    String paymentId ;
 
     @ManyToOne(fetch= FetchType.LAZY)@JsonManagedReference
     @Fetch(FetchMode.JOIN)

@@ -21,4 +21,5 @@ public class Client extends EBase {
     String companyClass ;
     String domainClass ;
     String notificationEndpoint ;
+    String paymentPrefixId;
 }

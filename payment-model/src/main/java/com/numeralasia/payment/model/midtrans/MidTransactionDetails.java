@@ -16,6 +16,11 @@ public class MidTransactionDetails implements Serializable {
     @JsonProperty("order_id")
     @SerializedName("order_id")
     String orderId;
+
+    @JsonProperty("payment_id")
+    @SerializedName("payment_id")
+    String paymentId;
+
     @JsonProperty("gross_amount")
     @SerializedName("gross_amount")
     Long grossAmount;

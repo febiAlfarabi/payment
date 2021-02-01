@@ -13,6 +13,8 @@ public class TransactionGateDto extends EBaseDto {
 
     String orderId ;
 
+    String paymentId ;
+
     ClientDto client ;
 
 }

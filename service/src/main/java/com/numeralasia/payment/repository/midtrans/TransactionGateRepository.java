@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface TransactionGateRepository extends EBaseRepository<TransactionGate> {
 
     Optional<TransactionGate> findByOrderId(String orderId);
+
+    Optional<TransactionGate> findByPaymentId(String paymentId);
 }
