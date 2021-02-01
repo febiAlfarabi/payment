@@ -6,6 +6,7 @@
     "serviceAddress": "https://dev.pasarkerja.com",
     "companyClass": "corporate",
     "domainClass": "domain",
-    "notificationEndpoint": "/api/midtrans/notification"
+    "notificationEndpoint": "/api/midtrans/notification",
+    "paymentPrefixId":"pk"
   }
 ]

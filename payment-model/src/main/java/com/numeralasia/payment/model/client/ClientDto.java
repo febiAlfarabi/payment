@@ -11,5 +11,6 @@ public class ClientDto {
     String companyClass ;
     String domainClass ;
     String notificationEndpoint ;
+    String paymentPrefixId;
 
 }
