@@ -75,6 +75,7 @@ public class TransactionGateController extends BasicController {
             @PathVariable String paymentId) {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
         Client client = clientService.findByReference(reference);
+        TransactionGate transactionGate = transactionGateService.findByPaymentId(paymentId);
         MidTransactionStatus midTransactionStatus = midtransPaymentManager.cancelPayment(paymentId);
         return ResponseEntity.ok(midTransactionStatus);
     }
@@ -85,6 +86,7 @@ public class TransactionGateController extends BasicController {
             @PathVariable String paymentId) {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
         Client client = clientService.findByReference(reference);
+        TransactionGate transactionGate = transactionGateService.findByPaymentId(paymentId);
         MidTransactionStatus midTransactionStatus = midtransPaymentManager.expirePayment(paymentId);
         return ResponseEntity.ok(midTransactionStatus);
     }
@@ -95,6 +97,7 @@ public class TransactionGateController extends BasicController {
             @PathVariable String paymentId) {
         String reference = new String(Base64.decode(referenceBase64, Base64.NO_WRAP));
         Client client = clientService.findByReference(reference);
+        TransactionGate transactionGate = transactionGateService.findByPaymentId(paymentId);
         MidTransactionStatus midTransactionStatus = midtransPaymentManager.checkStatus(paymentId);
         return ResponseEntity.ok(midTransactionStatus);
     }
