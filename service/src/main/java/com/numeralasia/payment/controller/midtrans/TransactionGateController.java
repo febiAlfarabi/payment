@@ -63,6 +63,7 @@ public class TransactionGateController extends BasicController {
         transactionGate.setOrderId(midChargeRequest.getTransactionDetails().getOrderId());
         transactionGate.setPaymentId(transactionGateService.buildPaymentId(client, midChargeRequest.getTransactionDetails().getOrderId()));
         MidtransChargeResponse midtransChargeResponse = midtransPaymentManager.charge(midChargeRequest);
+        midtransChargeResponse.setPaymentId(transactionGate.getPaymentId());
         transactionGate = transactionGateService.save(transactionGate);
         return midtransChargeResponse;
     }
