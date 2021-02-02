@@ -40,7 +40,7 @@
 
     <groupId>io.github.febialfarabi</groupId>
     <artifactId>payment-model</artifactId>
-    <version>1.0.37-SNAPSHOT</version>
+    <version>1.0.38-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
