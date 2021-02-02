@@ -62,96 +62,151 @@ public class MidTransactionStatus implements Serializable {
                 org.apache.commons.lang.StringUtils.equals(transactionStatus, TRANSACTION_STATUS_CANCELLED));
     }
 
-
     @JsonProperty("status_code")
     @SerializedName("status_code")
     String statusCode;
-
     @JsonProperty("status_message")
     @SerializedName("status_message")
     String statusMessage;
-
     @JsonProperty("transaction_id")
     @SerializedName("transaction_id")
     String transactionId;
-
+    @JsonProperty("saved_token_id")
+    @SerializedName("saved_token_id")
+    String savedTokenId;
+    @JsonProperty("masked_card")
+    @SerializedName("masked_card")
+    String maskedCard;
     @JsonProperty("order_id")
     @SerializedName("order_id")
     String orderId;
-
     @JsonProperty("gross_amount")
     @SerializedName("gross_amount")
     String grossAmount;
-
     @JsonProperty("payment_type")
     @SerializedName("payment_type")
     String paymentType;
-
     @JsonProperty("transaction_time")
     @SerializedName("transaction_time")
     String transactionTime;
-
-    @JsonProperty("settlement_time")
-    @SerializedName("settlement_time")
-    String settlementTime;
-
-
     @JsonProperty("transaction_status")
     @SerializedName("transaction_status")
     String transactionStatus;
-
-    @JsonProperty("va_numbers")
-    @SerializedName("va_numbers")
-    List<VaNumber> vaNumbers = new ArrayList<>();
-
     @JsonProperty("fraud_status")
     @SerializedName("fraud_status")
     String fraudStatus;
-
+    @JsonProperty("saved_token_id_expired_at")
+    @SerializedName("saved_token_id_expired_at")
+    String savedTokenIdExpiredAt;
+    @JsonProperty("approval_code")
+    @SerializedName("approval_code")
+    String approvalCode;
+    @JsonProperty("secure_token")
+    @SerializedName("secure_token")
+    boolean secureToken;
+    @JsonProperty("permata_va_number")
+    @SerializedName("permata_va_number")
+    String permataVANumber;
+    @JsonProperty("permata_expiration")
+    @SerializedName("permata_expiration")
+    String permataExpiration;
+    @JsonProperty("va_numbers")
+    @SerializedName("va_numbers")
+    List<VaNumber> accountNumbers;
+    @JsonProperty("bca_klikbca_expire_time")
+    @SerializedName("bca_klikbca_expire_time")
+    String bcaKlikBcaExpiration;
     @JsonProperty("bca_va_number")
     @SerializedName("bca_va_number")
     String bcaVaNumber;
-
+    @JsonProperty("bca_expiration")
+    @SerializedName("bca_expiration")
+    String bcaExpiration;
+    @JsonProperty("bni_va_number")
+    @SerializedName("bni_va_number")
+    String bniVaNumber;
+    @JsonProperty("bni_expiration")
+    @SerializedName("bni_expiration")
+    String bniExpiration;
+    @JsonProperty("bri_va_number")
+    @SerializedName("bri_va_number")
+    String briVaNumber;
+    @JsonProperty("bri_expiration")
+    @SerializedName("bri_expiration")
+    String briExpiration;
+    @JsonProperty("billpayment_expiration")
+    @SerializedName("billpayment_expiration")
+    String mandiriBillExpiration;
+    @JsonProperty("xl_tunai_order_id")
+    @SerializedName("xl_tunai_order_id")
+    String xlTunaiOrderId;
+    @JsonProperty("xl_tunai_merchant_id")
+    @SerializedName("xl_tunai_merchant_id")
+    String xlTunaiMerchantId;
+    @JsonProperty("xl_expiration")
+    @SerializedName("xl_expiration")
+    String xlTunaiExpiration;
+    @JsonProperty("installment_term")
+    @SerializedName("installment_term")
+    String installmentTerm;
+    @JsonProperty("gopay_expiration")
+    @SerializedName("gopay_expiration")
+    String gopayExpiration;
+    @JsonProperty("alfamart_expire_time")
+    @SerializedName("alfamart_expire_time")
+    String alfamartExpireTime;
+    @JsonProperty("gopay_expiration_raw")
+    @SerializedName("gopay_expiration_raw")
+    String gopayExpirationRaw;
+    @JsonProperty("indomaret_expire_time")
+    @SerializedName("indomaret_expire_time")
+    String indomaretExpireTime;
+    @JsonProperty("redirect_url")
+    @SerializedName("redirect_url")
+    String redirectUrl;
     @JsonProperty("pdf_url")
     @SerializedName("pdf_url")
     String pdfUrl;
-
-
+    String bank;
+    String eci;
+    @JsonProperty("bill_key")
+    @SerializedName("bill_key")
+    String paymentCode;
+    @JsonProperty("biller_code")
+    @SerializedName("biller_code")
+    String companyCode;
+    @JsonProperty("payment_code")
+    @SerializedName("payment_code")
+    String paymentCodeResponse;
     @JsonProperty("finish_redirect_url")
     @SerializedName("finish_redirect_url")
     String finishRedirectUrl;
+    @JsonProperty("kioson_expire_time")
+    @SerializedName("kioson_expire_time")
+    String kiosonExpireTime;
+    @JsonProperty("validation_messages")
+    @SerializedName("validation_messages")
+    ArrayList<String> validationMessages;
+    @JsonProperty("point_balance")
+    @SerializedName("point_balance")
+    float pointBalance;
+    @JsonProperty("point_balance_amount")
+    @SerializedName("point_balance_amount")
+    String pointBalanceAmount;
+    @JsonProperty("point_redeem_amount")
+    @SerializedName("point_redeem_amount")
+    float pointRedeemAmount;
+    @JsonProperty("qr_code_url")
+    @SerializedName("qr_code_url")
+    String qrCodeUrl;
+    @JsonProperty("deeplink_url")
+    @SerializedName("deeplink_url")
+    String deeplinkUrl;
+    @JsonProperty("qris_url")
+    @SerializedName("qris_url")
+    String qrisUrl;
+    String currency;
 
-    @JsonProperty("masked_card")
-    @SerializedName("masked_card")
-    String maskedCard ;
-
-    @JsonProperty("approval_code")
-    @SerializedName("approval_code")
-    String approvalCode ;
-
-    @JsonProperty("bank")
-    @SerializedName("bank")
-    String bank ;
-
-    @JsonProperty("channel_response_code")
-    @SerializedName("channel_response_code")
-    String channelResponseCode ;
-
-    @JsonProperty("channel_response_message")
-    @SerializedName("channel_response_message")
-    String channelResponseMessage ;
-
-    @JsonProperty("currency")
-    @SerializedName("currency")
-    String currency ;
-
-    @JsonProperty("signature_key")
-    @SerializedName("signature_key")
-    String signatureKey ;
-
-    @JsonProperty("card_type")
-    @SerializedName("card_type")
-    String cardType ;
 
 
 }
