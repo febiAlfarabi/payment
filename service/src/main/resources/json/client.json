@@ -7,6 +7,6 @@
     "companyClass": "corporate",
     "domainClass": "domain",
     "notificationEndpoint": "/api/midtrans/notification",
-    "paymentPrefixId":"pk"
+    "paymentPrefixId":"PK"
   }
 ]

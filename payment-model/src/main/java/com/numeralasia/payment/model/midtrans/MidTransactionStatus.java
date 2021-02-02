@@ -17,6 +17,7 @@ public class MidTransactionStatus implements Serializable {
     public static final String PENDING_CODE = "201";
     public static final String DENIED_CODE = "202";
     public static final String EXPIRED_CODE = "407";
+    public static final String DOESNT_EXIST = "404";
 
     public static final String TRANSACTION_STATUS_AUTHORIZED = "authorize";
     public static final String TRANSACTION_STATUS_CAPTURE = "capture";
@@ -53,8 +54,10 @@ public class MidTransactionStatus implements Serializable {
 
     public boolean isDenied(){
         return (
-                org.apache.commons.lang.StringUtils.equals(statusCode, DENIED_CODE)
-                        && org.apache.commons.lang.StringUtils.equals(transactionStatus, TRANSACTION_STATUS_DENIED));
+                (org.apache.commons.lang.StringUtils.equals(statusCode, DENIED_CODE)
+                        && org.apache.commons.lang.StringUtils.equals(transactionStatus, TRANSACTION_STATUS_DENIED))
+                ||
+                org.apache.commons.lang.StringUtils.equals(statusCode, DOESNT_EXIST));
     }
 
     public boolean isCanceled(){
