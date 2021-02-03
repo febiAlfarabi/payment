@@ -40,7 +40,7 @@
 
     <groupId>io.github.febialfarabi</groupId>
     <artifactId>payment-model</artifactId>
-    <version>1.0.44-SNAPSHOT</version>
+    <version>1.0.44</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -52,7 +52,7 @@
         <connection>scm:git:https://github.com/febiAlfarabi/payment.git</connection>
         <url>https://github.com/febiAlfarabi/payment</url>
         <developerConnection>scm:git:https://github.com/febiAlfarabi/payment.git</developerConnection>
-        <tag>payment-model-1.0.41</tag>
+        <tag>payment-model-1.0.44</tag>
     </scm>
 
     <distributionManagement>
