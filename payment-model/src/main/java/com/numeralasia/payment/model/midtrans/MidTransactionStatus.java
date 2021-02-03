@@ -34,6 +34,23 @@ public class MidTransactionStatus implements Serializable {
     public static final String FRAUD_STATUS_CHALLENGE = "challenge";
     public static final String FRAUD_STATUS_DENY = "deny";
 
+    public static final String GOPAY = "gopay";
+    public static final String E_CHANNEL = "echannel";
+    public static final String KLIK_BCA = "bca_klikbca";
+    public static final String C_STORE = "cstore";
+    public static final String BNI_VA = "bni_va";
+    public static final String BANK_TRANSFER = "bank_transfer";
+    public static final String DANAMON_ONLINE = "danamon_online";
+    public static final String MANDIRI_CLICK_PAY = "mandiri_clickpay";
+    public static final String INDOMARET = "indomaret";
+    public static final String BRI_EPAY = "bri_epay";
+    public static final String CIMB_CLICKS = "cimb_clicks";
+    public static final String BCA_VA = "bca_va";
+    public static final String PERMATA_VA = "permata_va";
+    public static final String AKULAKU = "akulaku";
+    public static final String ALFAMART = "alfamart";
+    public static final String CREDIT_CARD = "credit_card";
+
     @JsonIgnore
     public boolean isPending(){
         return (
