@@ -52,7 +52,7 @@
         <connection>scm:git:https://github.com/febiAlfarabi/payment.git</connection>
         <url>https://github.com/febiAlfarabi/payment</url>
         <developerConnection>scm:git:https://github.com/febiAlfarabi/payment.git</developerConnection>
-        <tag>payment-model-1.0.0</tag>
+        <tag>payment-model-1.0.41</tag>
     </scm>
 
     <distributionManagement>
