@@ -1,11 +1,13 @@
 package com.numeralasia.payment.model.midtrans;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 import com.numeralasia.payment.model.jurnal.VaNumber;
 import io.github.febialfarabi.utility.StringUtils;
 import lombok.Data;
 
+import java.beans.Transient;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +34,14 @@ public class MidTransactionStatus implements Serializable {
     public static final String FRAUD_STATUS_CHALLENGE = "challenge";
     public static final String FRAUD_STATUS_DENY = "deny";
 
+    @JsonIgnore
     public boolean isPending(){
         return (
                 org.apache.commons.lang.StringUtils.equals(statusCode, PENDING_CODE) &&
                         org.apache.commons.lang.StringUtils.equals(transactionStatus, TRANSACTION_STATUS_PENDING));
     }
 
+    @JsonIgnore
     public boolean isSucceed(){
         return (
                 org.apache.commons.lang.StringUtils.equals(statusCode, SUCCESS_CODE) &&
@@ -47,11 +51,13 @@ public class MidTransactionStatus implements Serializable {
                                         TRANSACTION_STATUS_SETTLED));
     }
 
+    @JsonIgnore
     public boolean isExpired(){
         return (
                 org.apache.commons.lang.StringUtils.equals(transactionStatus, TRANSACTION_STATUS_EXPIRED));
     }
 
+    @JsonIgnore
     public boolean isDenied(){
         return (
                 (org.apache.commons.lang.StringUtils.equals(statusCode, DENIED_CODE)
@@ -60,6 +66,7 @@ public class MidTransactionStatus implements Serializable {
                 org.apache.commons.lang.StringUtils.equals(statusCode, DOESNT_EXIST));
     }
 
+    @JsonIgnore
     public boolean isCanceled(){
         return (
                 org.apache.commons.lang.StringUtils.equals(transactionStatus, TRANSACTION_STATUS_CANCELLED));
