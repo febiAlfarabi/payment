@@ -53,8 +53,9 @@ public class MidtransController extends BasicController {
 
         Type type = new TypeToken<MidtransChargeResponse>(){}.getType();
         try{
+//            ResponseEntity<String> responseEntity = msRestTemplate.exchange(client.getServiceAddress()+client.getNotificationEndpoint(), HttpMethod.POST, entity, String.class);
             ResponseEntity<MidtransChargeResponse> responseEntity = msRestTemplate.exchange(client.getServiceAddress()+client.getNotificationEndpoint(), HttpMethod.POST, entity, ParameterizedTypeReference.forType(type));
-            if(responseEntity.getStatusCode()==HttpStatus.CREATED){
+            if(responseEntity.getStatusCode()==HttpStatus.CREATED || responseEntity.getStatusCode()==HttpStatus.OK){
                 MidtransChargeResponse midtransChargeResponse = responseEntity.getBody();
                 logger.debug("BODY RESPONSE {} ", midtransChargeResponse);
                 return WSResponse.instance(Constant.SUCCESS_CODE, Constant.SUCCESS);
