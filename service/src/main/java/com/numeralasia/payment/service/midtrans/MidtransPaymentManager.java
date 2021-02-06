@@ -87,7 +87,7 @@ public class MidtransPaymentManager {
         Type type = new TypeToken<MidtransChargeResponse>(){}.getType();
         try{
             ResponseEntity<MidtransChargeResponse> responseEntity = msRestTemplate.exchange(url, HttpMethod.POST, entity, ParameterizedTypeReference.forType(type));
-            if(responseEntity.getStatusCode()==HttpStatus.CREATED){
+            if(responseEntity.getStatusCode()==HttpStatus.CREATED || responseEntity.getStatusCode()==HttpStatus.OK){
                 MidtransChargeResponse midtransChargeResponse = responseEntity.getBody();
                 midtransChargeResponse.setClientKey(midtransClientKey);
                 logger.debug("BODY RESPONSE {} ", midtransChargeResponse);
@@ -118,7 +118,7 @@ public class MidtransPaymentManager {
         Type type = new TypeToken<MidTransactionStatus>() {}.getType();
         try {
             ResponseEntity responseEntity = msRestTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-            if (responseEntity.getStatusCode() == HttpStatus.OK) {
+            if (responseEntity.getStatusCode()==HttpStatus.CREATED || responseEntity.getStatusCode() == HttpStatus.OK) {
                 String bodyString = responseEntity.getBody().toString();
                 MidTransactionStatus midTransactionStatus = gson.fromJson(bodyString, type);
                 logger.debug("BODY RESPONSE {} ", midTransactionStatus);

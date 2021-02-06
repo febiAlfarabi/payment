@@ -19,7 +19,6 @@ public class OverrideResponseHeaderFilter implements Filter {
     Logger logger = LoggerFactory.getLogger(OverrideResponseHeaderFilter.class);
 
 
-
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;

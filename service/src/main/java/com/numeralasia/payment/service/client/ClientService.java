@@ -62,7 +62,7 @@ public class ClientService extends BasicRepoService<Client> {
             }
             logger.debug("############## FINISH BUILDING MASTER DATA CONTENT == {} ", map);
             logger.debug("############## FINISH BUILDING MASTER DATA AT " +
-                    new SimpleDateFormat("dd-MM-yyyy hh:mm:ss").format(new Date())
+                    new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date())
                     + " ###################");
 
         } catch (Exception e) {

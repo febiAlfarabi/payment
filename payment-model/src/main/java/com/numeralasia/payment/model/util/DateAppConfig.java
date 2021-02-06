@@ -9,7 +9,7 @@ public class DateAppConfig {
     public static final String API_DATE = "yyyy-MM-dd";
     public static final String PARAM_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
     public static final String API_DATE_FORMAT = COMPLETE_DATE_FORMAT;
-    public static final String RETROFIT_DATE_FORMAT = "MMM dd, yyyy HH:mm:ss a";
+    public static final String RETROFIT_DATE_FORMAT = "MMM dd, yyyy hh:mm:ss aa";
     public static final String BLOG_DATE_FORMAT ="yyyy-MM-dd'T'HH:mm:ss";
     public static final String API_DATE_EXAMPLE = "2000-12-27 22:59:59";
 
