@@ -106,7 +106,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
+            <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
 
@@ -326,10 +326,6 @@
         <!--            <name>bintray</name>-->
         <!--            <url>http://jcenter.bintray.com</url>-->
         <!--        </repository>-->
-        <repository>
-            <id>projectlombok.org</id>
-            <url>https://projectlombok.org/edge-releases</url>
-        </repository>
         <repository>
             <id>jdal</id>
             <name>JDAL Repository</name>
