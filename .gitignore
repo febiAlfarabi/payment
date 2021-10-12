@@ -5,4 +5,3 @@ payment-model/target
 payment-model/*.iml
 service/target
 service/*.iml
-**.sh
